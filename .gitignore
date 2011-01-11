@@ -1,9 +1,0 @@
-virtual-env/*
-dist/*
-build/*
-docs/_build/doctrees/*
-docs/build
-*.swp
-docs/source/README.rst
-pybedtools.egg-info/*
-*.pyc
