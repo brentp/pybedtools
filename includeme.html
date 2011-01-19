@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pybedtools overview and examples &mdash; pybedtools v0.2.0dev documentation</title>
+    <title>Overview &mdash; pybedtools v0.2.0dev documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="pybedtools v0.2.0dev documentation" href="index.html" />
-    <link rel="next" title="Quick examples for the impatient" href="main.html" />
+    <link rel="next" title="Installation" href="main.html" />
     <link rel="prev" title="Welcome to pybedtools&#39;s documentation!" href="index.html" /> 
   </head>
   <body>
@@ -36,7 +36,7 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="main.html" title="Quick examples for the impatient"
+          <a href="main.html" title="Installation"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="index.html" title="Welcome to pybedtools&#39;s documentation!"
@@ -50,64 +50,14 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="pybedtools-overview-and-examples">
-<h1><tt class="docutils literal"><span class="pre">pybedtools</span></tt> overview and examples<a class="headerlink" href="#pybedtools-overview-and-examples" title="Permalink to this headline">¶</a></h1>
-<p><tt class="docutils literal"><span class="pre">pybedtools</span></tt> is a Python wrapper for Aaron Quinlan's <tt class="docutils literal"><span class="pre">BEDtools</span></tt>
-(<a class="reference external" href="http://code.google.com/p/bedtools/">http://code.google.com/p/bedtools/</a>), designed to leverage the &quot;genome
-algebra&quot; power of <tt class="docutils literal"><span class="pre">BEDtools</span></tt> from within Python scripts.</p>
-<p>See full online documentation at <a class="reference external" href="http://daler.github.com/pybedtools">http://daler.github.com/pybedtools</a> (this
-README contains just installation instructions and a few examples).</p>
-<div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>For the latest version:</p>
-<blockquote>
-<div><ul>
-<li><p class="first">go to <a class="reference external" href="http://github.com/daler/pybedtools">http://github.com/daler/pybedtools</a></p>
-</li>
-<li><p class="first">click the Downloads link</p>
-</li>
-<li><p class="first">choose either a .tar.gz or a .zip file, whatever you're
-comfortable with</p>
-</li>
-<li><p class="first">unzip into a temporary directory</p>
-</li>
-<li><p class="first">from the command line, run:</p>
-<div class="highlight-python"><pre>python setup.py install</pre>
-</div>
-</li>
-</ul>
-</div></blockquote>
-<p>You will also need to install <tt class="docutils literal"><span class="pre">BEDTools</span></tt> -- see
-<a class="reference external" href="https://github.com/arq5x/bedtools">https://github.com/arq5x/bedtools</a></p>
-</div>
-<div class="section" id="two-examples">
-<h2>Two examples<a class="headerlink" href="#two-examples" title="Permalink to this headline">¶</a></h2>
-<p>Example: Save a new BED file of intersections between <tt class="docutils literal"><span class="pre">a.bed</span></tt> and
-<tt class="docutils literal"><span class="pre">b.bed</span></tt>, adding a track line to the output:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pybedtools</span> <span class="kn">import</span> <span class="n">bedtool</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;a.bed&#39;</span><span class="p">)</span>
-<span class="n">a</span><span class="o">.</span><span class="n">intersect</span><span class="p">(</span><span class="s">&#39;b.bed&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">saveas</span><span class="p">(</span><span class="s">&#39;a-and-b.bed&#39;</span><span class="p">,</span> <span class="n">trackline</span><span class="o">=</span><span class="s">&quot;track name=&#39;a and b&#39; color=128,0,0&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Example: Get values for a 3-way Venn diagram of overlaps.  This
-demonstrates operator overloading of <tt class="docutils literal"><span class="pre">bedtool</span></tt> objects:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pybedtools</span> <span class="kn">import</span> <span class="n">bedtool</span>
-
-<span class="c"># set up 3 different bedtools</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;a.bed&#39;</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;b.bed&#39;</span><span class="p">)</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;c.bed&#39;</span><span class="p">)</span>
-
-<span class="c">#</span>
-<span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="o">-</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>  <span class="c"># unique to a</span>
-<span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">-</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>  <span class="c"># in a and b, not c</span>
-<span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>  <span class="c"># common to all</span>
-<span class="c"># ... and so on, for all the combinations.</span>
-</pre></div>
-</div>
-<p>See the full documentation at <a class="reference external" href="http://daler.github.com/pybedtools">http://daler.github.com/pybedtools</a> for more
-examples and more information.</p>
-</div>
+  <div class="section" id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<p>pybedtools is a Python wrapper for Aaron Quinlan's BEDtools and is
+designed to leverage the &quot;genome algebra&quot; power of BEDtools from within
+Python scripts.</p>
+<p>This documentation is written assuming you know how to use BEDTools and
+Python.</p>
+<p>See full online documentation at <a class="reference external" href="http://daler.github.com/pybedtools">http://daler.github.com/pybedtools</a>.</p>
 </div>
 
 
@@ -116,21 +66,12 @@ examples and more information.</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#"><tt class="docutils literal"><span class="pre">pybedtools</span></tt> overview and examples</a><ul>
-<li><a class="reference internal" href="#installation">Installation</a></li>
-<li><a class="reference internal" href="#two-examples">Two examples</a></li>
-</ul>
-</li>
-</ul>
-
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
                         title="previous chapter">Welcome to pybedtools's documentation!</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="main.html"
-                        title="next chapter">Quick examples for the impatient</a></p>
+                        title="next chapter">Installation</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/includeme.txt"
@@ -163,7 +104,7 @@ examples and more information.</p>
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="main.html" title="Quick examples for the impatient"
+          <a href="main.html" title="Installation"
              >next</a> |</li>
         <li class="right" >
           <a href="index.html" title="Welcome to pybedtools&#39;s documentation!"
@@ -173,7 +114,7 @@ examples and more information.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2010, Ryan Dale.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5.
     </div>
   </body>
 </html>
