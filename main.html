@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Overview &mdash; pybedtools v0.2.0dev documentation</title>
+    <title>Installation &mdash; pybedtools v0.2.0dev documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="pybedtools v0.2.0dev documentation" href="index.html" />
     <link rel="next" title="Tutorial" href="tutorial.html" />
-    <link rel="prev" title="Overview" href="includeme.html" /> 
+    <link rel="prev" title="Welcome to pybedtools&#39;s documentation!" href="index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -39,7 +39,7 @@
           <a href="tutorial.html" title="Tutorial"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="includeme.html" title="Overview"
+          <a href="index.html" title="Welcome to pybedtools&#39;s documentation!"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">pybedtools v0.2.0dev documentation</a> &raquo;</li> 
       </ul>
@@ -50,19 +50,17 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="installation">
+<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
 <p>To use <a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a> you'll need the latest version of the package and
 the latest version of <a class="reference external" href="http://github.com/arq5x/bedtools">BEDTools</a>.</p>
 <ol class="arabic">
 <li><p class="first">To install the latest version of <a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a>:</p>
 <blockquote>
-<ul>
+<div><ul>
 <li><p class="first">go to <a class="reference external" href="http://github.com/daler/pybedtools">http://github.com/daler/pybedtools</a></p>
 </li>
-<li><p class="first">click the Downloads link (<img alt="dl" src="_images/downloads.png" />)</p>
+<li><p class="first">click the Downloads link (<img alt="dl" src="_images/downloads6.png" />)</p>
 </li>
 <li><p class="first">choose either a <tt class="docutils literal"><span class="pre">.tar.gz</span></tt> or a <tt class="docutils literal"><span class="pre">.zip</span></tt> file, whatever you're
 comfortable with</p>
@@ -75,39 +73,46 @@ comfortable with</p>
 <p>(you may need admin rights to do this)</p>
 </li>
 </ul>
-</blockquote>
+</div></blockquote>
 </li>
 <li><p class="first">To install <a class="reference external" href="http://github.com/arq5x/bedtools">BEDTools</a></p>
 <blockquote>
-<ul class="simple">
+<div><ul class="simple">
 <li>follow the instructions at <a class="reference external" href="https://github.com/arq5x/bedtools">https://github.com/arq5x/bedtools</a> to install</li>
 <li>make sure all its programs are on your path</li>
 </ul>
-</blockquote>
+</div></blockquote>
 </li>
 </ol>
 </div>
 <div class="section" id="three-brief-examples">
-<h2>Three brief examples<a class="headerlink" href="#three-brief-examples" title="Permalink to this headline">¶</a></h2>
+<h1>Three brief examples<a class="headerlink" href="#three-brief-examples" title="Permalink to this headline">¶</a></h1>
 <p>Here are three examples to show typical usage of <a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a>.  More
 info can be found in the docstrings of <a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a> methods and in the
-<a class="reference internal" href="tutorial.html#tutorial"><em>Tutorial</em></a></p>
-<div class="section" id="example-1">
-<h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
-<p>Save a new BED file of intersections between <tt class="docutils literal"><span class="pre">a.bed</span></tt> and
+<a class="reference internal" href="tutorial.html#tutorial"><em>Tutorial</em></a>.  Before running the examples, you need to import
+<a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pybedtools</span> <span class="kn">import</span> <span class="n">bedtool</span><span class="p">,</span> <span class="n">cleanup</span>
+</pre></div>
+</div>
+<p>After running the examples, clean up any intermediate temporary files
+with:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">cleanup</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="example-1-save-a-bed-file-of-intersections-with-track-line">
+<h2>Example 1: Save a BED file of intersections, with track line<a class="headerlink" href="#example-1-save-a-bed-file-of-intersections-with-track-line" title="Permalink to this headline">¶</a></h2>
+<p>This example saves a new BED file of intersections between <tt class="docutils literal"><span class="pre">a.bed</span></tt> and
 <tt class="docutils literal"><span class="pre">b.bed</span></tt>, adding a track line to the output:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pybedtools</span> <span class="kn">import</span> <span class="n">bedtool</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;a.bed&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;a.bed&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">intersect</span><span class="p">(</span><span class="s">&#39;b.bed&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">saveas</span><span class="p">(</span><span class="s">&#39;a-and-b.bed&#39;</span><span class="p">,</span> <span class="n">trackline</span><span class="o">=</span><span class="s">&quot;track name=&#39;a and b&#39; color=128,0,0&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="example-2">
-<h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h3>
-<p>Get values for a 3-way Venn diagram of overlaps.  This
+<div class="section" id="example-2-intersections-for-a-3-way-venn-diagram">
+<h2>Example 2: Intersections for a 3-way Venn diagram<a class="headerlink" href="#example-2-intersections-for-a-3-way-venn-diagram" title="Permalink to this headline">¶</a></h2>
+<p>This example gets values for a 3-way Venn diagram of overlaps.  This
 demonstrates operator overloading of <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> objects:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pybedtools</span> <span class="kn">import</span> <span class="n">bedtool</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c"># set up 3 different bedtools</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># set up 3 different bedtools</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;a.bed&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;b.bed&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;c.bed&#39;</span><span class="p">)</span>
@@ -119,21 +124,37 @@ demonstrates operator overloading of <tt class="xref py py-class docutils litera
 </pre></div>
 </div>
 </div>
-<div class="section" id="example-3">
-<h3>Example 3<a class="headerlink" href="#example-3" title="Permalink to this headline">¶</a></h3>
-<p>Get the sequences of the 100 bp on either side of features.</p>
+<div class="section" id="example-3-flanking-sequences">
+<h2>Example 3: Flanking sequences<a class="headerlink" href="#example-3-flanking-sequences" title="Permalink to this headline">¶</a></h2>
+<p>This example gets the genomic sequences of the 100 bp on either side of
+features.</p>
 <p>The <tt class="xref py py-meth docutils literal"><span class="pre">bedtool.slop()</span></tt> method automatically downloads the
 <tt class="docutils literal"><span class="pre">chromSizes</span></tt> table from UCSC for the dm3 genome, but you can pass your
 own file using the standard BEDTools <tt class="docutils literal"><span class="pre">slop</span></tt> argument of <tt class="docutils literal"><span class="pre">g</span></tt>.  Note that
 this example assumes you have a local copy of the entire dm3 genome saved
 as <tt class="docutils literal"><span class="pre">dm3.fa</span></tt>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pybedtools</span> <span class="kn">import</span> <span class="n">bedtool</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">slop</span><span class="p">(</span><span class="n">genome</span><span class="o">=</span><span class="s">&#39;dm3&#39;</span><span class="p">,</span><span class="n">l</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">r</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">flanking_features</span><span class="o">.</span><span class="n">sequence</span><span class="p">(</span><span class="n">fi</span><span class="o">=</span><span class="s">&#39;dm3.fa&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">save_seqs</span><span class="p">(</span><span class="s">&#39;flanking.fa&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># set up bedtool</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mybed</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># add 100 bp of &quot;slop&quot; to either side.  genome=&#39;dm3&#39; tells</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># the slop() method to download the dm3 chromSizes table from</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># UCSC.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">extended_by_100</span> <span class="o">=</span> <span class="n">mybed</span><span class="o">.</span><span class="n">slop</span><span class="p">(</span><span class="n">genome</span><span class="o">=</span><span class="s">&#39;dm3&#39;</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Delete the middle of the now-200-bp-bigger features so</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># all we&#39;re left with is the flanking region</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flanking_features</span> <span class="o">=</span> <span class="n">extended_by_100</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Assuming you have the dm3 genome on disk as &#39;dm3.fa&#39;, save the</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># sequences as a new file &#39;flanking.fa&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seqs</span> <span class="o">=</span> <span class="n">flanking_features</span><span class="o">.</span><span class="n">sequence</span><span class="p">(</span><span class="n">fi</span><span class="o">=</span><span class="s">&#39;dm3.fa&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">save_seqs</span><span class="p">(</span><span class="s">&#39;flanking.fa&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># We could have done this all in one line</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># (this demonstrates &quot;chaining&quot; of bedtool objects)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">slop</span><span class="p">(</span><span class="n">genome</span><span class="o">=</span><span class="s">&#39;dm3&#39;</span><span class="p">,</span><span class="n">l</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">r</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">flanking_features</span><span class="o">.</span><span class="n">sequence</span><span class="p">(</span><span class="n">fi</span><span class="o">=</span><span class="s">&#39;dm3.fa&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">save_seqs</span><span class="p">(</span><span class="s">&#39;flanking.fa&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>For more, continue on to the <a class="reference internal" href="tutorial.html#tutorial"><em>Tutorial</em></a>.</p>
-</div>
 </div>
 </div>
 
@@ -145,21 +166,18 @@ as <tt class="docutils literal"><span class="pre">dm3.fa</span></tt>.</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Overview</a><ul>
-<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#">Installation</a></li>
 <li><a class="reference internal" href="#three-brief-examples">Three brief examples</a><ul>
-<li><a class="reference internal" href="#example-1">Example 1</a></li>
-<li><a class="reference internal" href="#example-2">Example 2</a></li>
-<li><a class="reference internal" href="#example-3">Example 3</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#example-1-save-a-bed-file-of-intersections-with-track-line">Example 1: Save a BED file of intersections, with track line</a></li>
+<li><a class="reference internal" href="#example-2-intersections-for-a-3-way-venn-diagram">Example 2: Intersections for a 3-way Venn diagram</a></li>
+<li><a class="reference internal" href="#example-3-flanking-sequences">Example 3: Flanking sequences</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="includeme.html"
-                        title="previous chapter">Overview</a></p>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to pybedtools's documentation!</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="tutorial.html"
                         title="next chapter">Tutorial</a></p>
@@ -198,14 +216,14 @@ as <tt class="docutils literal"><span class="pre">dm3.fa</span></tt>.</p>
           <a href="tutorial.html" title="Tutorial"
              >next</a> |</li>
         <li class="right" >
-          <a href="includeme.html" title="Overview"
+          <a href="index.html" title="Welcome to pybedtools&#39;s documentation!"
              >previous</a> |</li>
         <li><a href="index.html">pybedtools v0.2.0dev documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2010, Ryan Dale.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>
