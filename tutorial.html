@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Tutorial &mdash; pybedtools v0.2.1dev documentation</title>
+    <title>Tutorial &mdash; pybedtools v0.2.0dev documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.2.1dev',
+        VERSION:     '0.2.0dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="pybedtools v0.2.1dev documentation" href="index.html" />
+    <link rel="top" title="pybedtools v0.2.0dev documentation" href="index.html" />
     <link rel="next" title="Module documentation" href="autodoc_source.html" />
     <link rel="prev" title="Installation" href="main.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="main.html" title="Installation"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">pybedtools v0.2.1dev documentation</a> &raquo;</li> 
+        <li><a href="index.html">pybedtools v0.2.0dev documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -80,14 +80,14 @@ means to type the code into an interactive Python interpreter like <a class="ref
 <p>Onward!</p>
 </div>
 <div class="section" id="create-a-bedtool">
-<h2>Create a <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a><a class="headerlink" href="#create-a-bedtool" title="Permalink to this headline">¶</a></h2>
+<h2>Create a <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt><a class="headerlink" href="#create-a-bedtool" title="Permalink to this headline">¶</a></h2>
 <p>First, import the <a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a> module:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pybedtools</span>
 </pre></div>
 </div>
-<p>Then set up a <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> instance using a <a class="reference external" href="http://genome.ucsc.edu/FAQ/FAQformat#format1">BED format</a> file. This
+<p>Then set up a <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> instance using a <a class="reference external" href="http://genome.ucsc.edu/FAQ/FAQformat#format1">BED format</a> file. This
 can be a file that you already have, or one of the example files as shown
-below.  Currently, only BED format files are supported -- see
+below.  Some methods currently only work for BED files -- see
 <a class="reference internal" href="#limitations"><em>Limitations</em></a> for more info on this.</p>
 <p>For this tutorial, we'll use some example files that come with
 <a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a>.  We can get the filename for the example files using the
@@ -97,19 +97,19 @@ below.  Currently, only BED format files are supported -- see
 </pre></div>
 </div>
 <p>The filename will depend on where you have installed <a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a>.
-Once you have a filename, creating a <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> object is easy:</p>
+Once you have a filename, creating a <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> object is easy:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># create a new bedtool using that filename</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">pybedtools</span><span class="o">.</span><span class="n">bedtool</span><span class="p">(</span><span class="n">bed_filename_a</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Set up a second one so we can do intersections and subtractions -- this
-time, let's make a new <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> all in one line:</p>
+time, let's make a new <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> all in one line:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># create another bedtool to play around with</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">pybedtools</span><span class="o">.</span><span class="n">bedtool</span><span class="p">(</span><span class="n">pybedtools</span><span class="o">.</span><span class="n">example_bed_fn</span><span class="p">(</span><span class="s">&#39;b.bed&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>See <a class="reference internal" href="#creating-a-bedtool"><em>Creating a bedtool</em></a> for more information, including convenience
-functions for working with example bed files and making <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a>
+functions for working with example bed files and making <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt>
 objects directly from strings.</p>
 </div>
 <div class="section" id="intersections">
@@ -118,12 +118,12 @@ objects directly from strings.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a_and_b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">intersect</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><em>a_and_b</em> is a new <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> instance.  It now points to a temp file
+<p><em>a_and_b</em> is a new <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> instance.  It now points to a temp file
 on disk, which is stored in the attribute <em>a_and_b.fn</em>; this temp file contains
 the intersection of <em>a</em> and <em>b</em>.</p>
-<p>We can either print the new <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> (which will show ALL features
+<p>We can either print the new <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> (which will show ALL features
 -- use with caution if you have huge files!) or use the
-<a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.head" title="pybedtools.bedtool.head"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.head()</span></tt></a> method to get the first N lines (10 by default).
+<tt class="xref py py-meth docutils literal"><span class="pre">bedtool.head()</span></tt> method to get the first N lines (10 by default).
 Here's what <em>a</em>, <em>b</em>, and <em>a_and_b</em> look like:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="go">chr1    1   100 feature1    0   +</span>
@@ -158,7 +158,7 @@ something in <em>b</em>), then we can use the keyword argument <em>u=True</em>, 
 <p><em>a_with_b</em> is another, different temp file whose name is stored in
 <em>a_with_b.fn</em>.  You can read more about the use of temp files in
 <a class="reference internal" href="#temp-principle"><em>Principle 1: Temporary files are created automatically</em></a>.  More on arguments that you can pass to
-<a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> objects in a moment, but first, some info about saving
+<tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> objects in a moment, but first, some info about saving
 files.</p>
 </div>
 <div class="section" id="saving-the-results">
@@ -171,7 +171,7 @@ opening up the files afterward and manually adding a trackline:</p>
 <span class="go">&lt;bedtool (intersection-of-a-and-b.bed)&gt;</span>
 </pre></div>
 </div>
-<p>Note that the <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.saveas" title="pybedtools.bedtool.saveas"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.saveas()</span></tt></a> method returns a new <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a>
+<p>Note that the <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.saveas" title="pybedtools.bedtool.saveas"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.saveas()</span></tt></a> method returns a new <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt>
 object which points to the newly created file on disk.  This allows you to
 insert a <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.saveas" title="pybedtools.bedtool.saveas"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.saveas()</span></tt></a> call in the middle of a chain of commands
 (described in another section below).</p>
@@ -184,7 +184,7 @@ insert a <a class="reference internal" href="autodoc_source.html#pybedtools.bedt
 </div>
 <p>While we're on the subject of arguments, note that we didn't have to
 specify <em>-a</em> or <em>-b</em> arguments, like you would need if calling
-<tt class="docutils literal"><span class="pre">intersectBed</span></tt> from the command line.  That's because <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a>
+<tt class="docutils literal"><span class="pre">intersectBed</span></tt> from the command line.  That's because <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt>
 objects make some assumptions for convenience.</p>
 <p>We could have supplied the arguments <em>a=a.fn</em> and <em>b=b.fn</em>.  But since
 we're calling a method on <em>a</em>, <a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a> assumes that the file <em>a</em>
@@ -195,16 +195,16 @@ because the <tt class="xref py py-meth docutils literal"><span class="pre">a.int
 such methods include <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.subtract" title="pybedtools.bedtool.subtract"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.subtract()</span></tt></a> and <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.closest" title="pybedtools.bedtool.closest"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.closest()</span></tt></a>.
 In these cases, <a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a> assumes the first unnamed argument to
 these methods are the second file you want to operate on (and if you pass a
-<a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a>, it'll automatically use the file in the <em>fn</em> attribute of
-that <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a>).  So <tt class="docutils literal"><span class="pre">a.intersect(b)</span></tt> is just a more convenient
+<tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt>, it'll automatically use the file in the <em>fn</em> attribute of
+that <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt>).  So <tt class="docutils literal"><span class="pre">a.intersect(b)</span></tt> is just a more convenient
 form of <tt class="docutils literal"><span class="pre">a.intersect(a=a.fn,</span> <span class="pre">b=b.fn)</span></tt>, which does the same thing.</p>
 <p>OK, enough about arguments for now, but you can read more about them in
 <a class="reference internal" href="#similarity-principle"><em>Principle 2: Names and arguments are as similar as possible to BEDTools</em></a>, <a class="reference internal" href="#default-args-principle"><em>Principle 3: Sensible default args</em></a> and <a class="reference internal" href="#non-defaults-principle"><em>Principal 4: Other arguments have no defaults</em></a>.</p>
 </div>
 <div class="section" id="chaining-methods-together-pipe">
 <h2>Chaining methods together (pipe)<a class="headerlink" href="#chaining-methods-together-pipe" title="Permalink to this headline">¶</a></h2>
-<p>One useful thing about <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> methods is that they often return a
-new <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a>.  In practice, this means that we can chain together
+<p>One useful thing about <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> methods is that they often return a
+new <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt>.  In practice, this means that we can chain together
 multiple method calls all in one line, similar to piping on the command
 line.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># Intersect and then merge all on one line, displaying the first</span>
@@ -214,18 +214,18 @@ line.</p>
 <span class="go">chr1    900 950</span>
 </pre></div>
 </div>
-<p>In general, methods that return <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> objects have the following text in
+<p>In general, methods that return <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> objects have the following text in
 their docstring to indicate this:</p>
 <div class="highlight-python"><pre>.. note::
 
     This method returns a new bedtool instance</pre>
 </div>
 <p>A rule of thumb is that all methods that wrap <a class="reference external" href="http://github.com/arq5x/bedtools">BEDTools</a> programs return
-<a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> objects, so you can chain these together. Other
-<a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a>-unique methods return <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> objects too, just
+<tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> objects, so you can chain these together. Other
+<a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a>-unique methods return <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> objects too, just
 check the docs (according to <a class="reference internal" href="#good-docs-principle"><em>Principle 6: Check the help</em></a>). For example, as
 we saw in one of the examples above, the <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.saveas" title="pybedtools.bedtool.saveas"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.saveas()</span></tt></a> method
-returns a <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> object.  That means we can sprinkle those
+returns a <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> object.  That means we can sprinkle those
 commands within the example above to save the intermediate steps as
 meaningful filenames for later use:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">intersect</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">saveas</span><span class="p">(</span><span class="s">&#39;a-with-b.bed&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">()</span><span class="o">.</span><span class="n">saveas</span><span class="p">(</span><span class="s">&#39;a-with-b-merged.bed&#39;</span><span class="p">)</span>
@@ -254,7 +254,7 @@ To illustrate, these two example commands do the same thing:</p>
 <span class="go">True</span>
 </pre></div>
 </div>
-<p>If you want to operating on the resulting <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> that is
+<p>If you want to operating on the resulting <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> that is
 returned by an addition or subtraction, you'll need to wrap the operation
 in parentheses:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">merged</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">()</span>
@@ -265,10 +265,10 @@ in parentheses:</p>
 <div class="section" id="methods-specific-to-pybedtools">
 <h2>Methods specific to <a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a><a class="headerlink" href="#methods-specific-to-pybedtools" title="Permalink to this headline">¶</a></h2>
 <p>In no particular order, here are some other useful things that
-<a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> objects can do.</p>
+<tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> objects can do.</p>
 <div class="section" id="counting">
 <h3>Counting<a class="headerlink" href="#counting" title="Permalink to this headline">¶</a></h3>
-<p>We can easily count features in <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> objects:</p>
+<p>We can easily count features in <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> objects:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 <span class="go">4</span>
 
@@ -296,7 +296,7 @@ ChIP-seq data:</p>
 <div class="section" id="creating-genome-files-chromsizes">
 <h3>Creating genome files ('chromSizes')<a class="headerlink" href="#creating-genome-files-chromsizes" title="Permalink to this headline">¶</a></h3>
 <p>Some <a class="reference external" href="http://github.com/arq5x/bedtools">BEDTools</a> programs require a &quot;chromSizes&quot; file to prevent out-of-range
-coordinates.  <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> objects have a convenience method to get
+coordinates.  <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> objects have a convenience method to get
 this file for you and return the resulting filename:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># Download Drosophila melanogaster chromSizes table from UCSC</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">chromsizes</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">get_genome</span><span class="p">(</span><span class="s">&#39;hg19&#39;</span><span class="p">,</span> <span class="n">fn</span><span class="o">=</span><span class="s">&#39;hg19.genome&#39;</span><span class="p">)</span>
@@ -315,7 +315,7 @@ this file for you and return the resulting filename:</p>
 </div>
 <div class="section" id="feature-centers">
 <h3>Feature centers<a class="headerlink" href="#feature-centers" title="Permalink to this headline">¶</a></h3>
-<p>We can get the midpoints of features, with <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.feature_centers" title="pybedtools.bedtool.feature_centers"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.feature_centers()</span></tt></a>,
+<p>We can get the midpoints of features, with <tt class="xref py py-meth docutils literal"><span class="pre">bedtool.feature_centers()</span></tt>,
 which is useful for things like extracting out the center N bp of features
 for de novo motif detection.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">feature_centers</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">saveas</span><span class="p">(</span><span class="s">&#39;middle-100-bp.bed&#39;</span><span class="p">)</span>
@@ -360,25 +360,27 @@ the files that are returned when you use the <em>c=True</em> kwarg with
 <p>The following is a list of items I plan to work on for future releases of
 <a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a>.  Help and feedback are welcome!:</p>
 <ul>
+<li><p class="first">Finish wrapping the rest of the <a class="reference external" href="http://github.com/arq5x/bedtools">BEDTools</a> programs</p>
+</li>
 <li><p class="first">Better mechanism for handling temp files.</p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> objects could keep track of all their 'parent'
+<li><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> objects could keep track of all their 'parent'
 tempfiles, and as such would retain the history of their creation.</li>
-<li>indexing into the history of a <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> would give you access
+<li>indexing into the history of a <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> would give you access
 to these previous files</li>
 <li>could have a <tt class="xref py py-meth docutils literal"><span class="pre">bedtool.delete_history()</span></tt>, which would delete all the
 intermediate tempfiles on disk, cleaning up only for this particular
-<a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a></li>
+<tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></li>
 </ul>
 </div></blockquote>
 </li>
 <li><p class="first">Universal &quot;interval&quot; file support</p>
 <blockquote>
 <div><ul class="simple">
-<li>parent <tt class="xref py py-class docutils literal"><span class="pre">UniversalInterval</span></tt> class, GFF, GTF, VCF, etc. etc. all
-subclassed from that</li>
-<li><a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> should auto-detect the interval file format</li>
+<li>Should have a parent <tt class="xref py py-class docutils literal"><span class="pre">UniversalInterval</span></tt> class and then have
+GFF, GTF, VCF, etc. etc. all subclassed from that</li>
+<li><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> should auto-detect the interval file format</li>
 </ul>
 </div></blockquote>
 </li>
@@ -387,7 +389,7 @@ subclassed from that</li>
 <div><ul>
 <li><p class="first">currently the handling of output created by <tt class="docutils literal"><span class="pre">a.intersect(b,</span> <span class="pre">c=True)</span></tt>
 is special-cased, and <tt class="docutils literal"><span class="pre">a.intersect(b,</span> <span class="pre">wao=True)</span></tt> is unsupported by
-custom <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> methods.</p>
+custom <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> methods.</p>
 </li>
 <li><dl class="first docutils">
 <dt>these should probably just be implemented as subclasses of the as-yet</dt>
@@ -405,7 +407,14 @@ custom <a class="reference internal" href="autodoc_source.html#pybedtools.bedtoo
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">Randomization methods are still under development</p>
+<li><p class="first">Randomization methods still under development</p>
+</li>
+<li><p class="first">Have wrappers use subprocess.Popen instead of os.system calls for better
+trapping of errors</p>
+</li>
+<li><p class="first">More universal wrapper -- perhaps as decorator?</p>
+</li>
+<li><p class="first">Full unit tests to bolster the tutorial doctests</p>
 </li>
 </ul>
 </div>
@@ -435,7 +444,7 @@ this got old quickly, hence the creation of <a class="reference internal" href="
 <span class="gp">&gt;&gt;&gt; </span><span class="n">count</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">intersect</span><span class="p">(</span><span class="s">&#39;b.bed&#39;</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Behind the scenes, the <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">pybedtools.bedtool</span></tt></a> class does something
+<p>Behind the scenes, the <tt class="xref py py-class docutils literal"><span class="pre">pybedtools.bedtool</span></tt> class does something
 very similar to the subprocess example above, but in a more Python-friendly
 way.</p>
 <p>Furthermore, for the specific case of intersections, the <tt class="docutils literal"><span class="pre">+</span></tt> and <tt class="docutils literal"><span class="pre">-</span></tt>
@@ -450,9 +459,9 @@ operators have been overloaded, making many intersections extremely easy:</p>
 </pre></div>
 </div>
 <p>The other <a class="reference external" href="http://github.com/arq5x/bedtools">BEDTools</a> programs are wrapped as well, like
-<a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.merge" title="pybedtools.bedtool.merge"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.merge()</span></tt></a>, <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.slop" title="pybedtools.bedtool.slop"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.slop()</span></tt></a>, and others.</p>
+<a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.merge" title="pybedtools.bedtool.merge"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.merge()</span></tt></a>, <tt class="xref py py-meth docutils literal"><span class="pre">bedtool.slop()</span></tt>, and others.</p>
 <p>In addition to wrapping the <a class="reference external" href="http://github.com/arq5x/bedtools">BEDtools</a> programs, there are many additional
-<a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> methods provided in this module that you can use in your
+<tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> methods provided in this module that you can use in your
 Python code.</p>
 </div>
 <div class="section" id="limitations">
@@ -463,16 +472,55 @@ Python code.</p>
 very convenient to work with, but if you are limited by disk space,
 you'll have to pay attention to this feature (see <a class="reference internal" href="#temp-principle">temp principle</a> below
 for more info).</li>
-<li>Second, <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> methods that wrap <a class="reference external" href="http://github.com/arq5x/bedtools">BEDTools</a> programs will work on
-BAM, GFF, VCF, and everything that <a class="reference external" href="http://github.com/arq5x/bedtools">BEDTools</a> supports.  However, many
-<a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a>-specific methods (for example <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.lengths" title="pybedtools.bedtool.lengths"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.lengths()</span></tt></a>
-or <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.size_filter" title="pybedtools.bedtool.size_filter"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.size_filter()</span></tt></a>) <strong>currently only work on BED files</strong>.  I
+<li><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> methods that wrap <a class="reference external" href="http://github.com/arq5x/bedtools">BEDTools</a> programs
+(<a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.intersect" title="pybedtools.bedtool.intersect"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.intersect()</span></tt></a>, <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.merge" title="pybedtools.bedtool.merge"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.merge()</span></tt></a>,
+<a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.subtract" title="pybedtools.bedtool.subtract"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.subtract()</span></tt></a>, etc) will work on BAM, GFF, VCF, and everything
+that <a class="reference external" href="http://github.com/arq5x/bedtools">BEDTools</a> supports.  However, many <a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a>-specific
+methods (for example <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.lengths" title="pybedtools.bedtool.lengths"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.lengths()</span></tt></a> or
+<a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.size_filter" title="pybedtools.bedtool.size_filter"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.size_filter()</span></tt></a>) <strong>currently only work on BED files</strong>.  I
 hope to add support for all interval files soon.</li>
+<li><strong>Not all BEDTools programs are wrapped</strong> -- this package is still a work
+in progress.  I wrapped the ones I use most often and still need to wrap
+the others. The following table shows what's currently wrapped:</li>
 </ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">BEDTools program</th>
+<th class="head"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> method name</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><tt class="docutils literal"><span class="pre">intersectBed</span></tt></td>
+<td><a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.intersect" title="pybedtools.bedtool.intersect"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.intersect()</span></tt></a></td>
+</tr>
+<tr><td><tt class="docutils literal"><span class="pre">subtractBed</span></tt></td>
+<td><a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.subtract" title="pybedtools.bedtool.subtract"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.subtract()</span></tt></a></td>
+</tr>
+<tr><td><tt class="docutils literal"><span class="pre">fastaFromBed</span></tt></td>
+<td><a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.sequence" title="pybedtools.bedtool.sequence"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.sequence()</span></tt></a></td>
+</tr>
+<tr><td><tt class="docutils literal"><span class="pre">slopBed</span></tt></td>
+<td><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.slop()</span></tt></td>
+</tr>
+<tr><td><tt class="docutils literal"><span class="pre">windowBed</span></tt></td>
+<td><a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.window" title="pybedtools.bedtool.window"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.window()</span></tt></a></td>
+</tr>
+<tr><td><tt class="docutils literal"><span class="pre">closestBed</span></tt></td>
+<td><a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.closest" title="pybedtools.bedtool.closest"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.closest()</span></tt></a></td>
+</tr>
+<tr><td><tt class="docutils literal"><span class="pre">shuffleBed</span></tt></td>
+<td><a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.shuffle" title="pybedtools.bedtool.shuffle"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.shuffle()</span></tt></a></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="creating-a-bedtool">
-<span id="id3"></span><h2>Creating a <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a><a class="headerlink" href="#creating-a-bedtool" title="Permalink to this headline">¶</a></h2>
-<p>To create a <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a>, first you need to import the
+<span id="id3"></span><h2>Creating a <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt><a class="headerlink" href="#creating-a-bedtool" title="Permalink to this headline">¶</a></h2>
+<p>To create a <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt>, first you need to import the
 <a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a> module.  For these examples, I'm assuming you have
 already done the following:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pybedtools</span>
@@ -498,7 +546,7 @@ example files that ship with <a class="reference internal" href="autodoc_source.
 <p>The full path of <em>bedfn</em> will depend on your installation (this is similar
 to the <tt class="docutils literal"><span class="pre">data()</span></tt> function in <a class="reference external" href="http://www.r-project.org/">R</a>, if you're familiar with that).</p>
 <p>Now that you have a filename -- either one of the example files or your
-own, you create a new <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> simply by pointing it to that
+own, you create a new <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> simply by pointing it to that
 filename:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># create a new bedtool from the example bed file</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mybedtool</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="n">bedfn</span><span class="p">)</span>
@@ -551,10 +599,10 @@ in a strand-specific way (<em>s=True</em>):</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">merged_a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">d</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Now <em>merged_a</em> is a <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> instance that contains the results of the
+<p>Now <em>merged_a</em> is a <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> instance that contains the results of the
 merge.</p>
-<p><a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> objects must always point to a file on disk.  So in the
-example above, <em>merged_a</em> is a <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a>, but what file does it
+<p><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> objects must always point to a file on disk.  So in the
+example above, <em>merged_a</em> is a <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt>, but what file does it
 point to?  You can always check the <tt class="xref py py-attr docutils literal"><span class="pre">bedtool.fn</span></tt> attribute to find
 out:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># what file does *merged_a* point to?</span>
@@ -594,7 +642,7 @@ exist.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">merged_a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">d</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Another <a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a> principle is that the <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> methods
+<p>Another <a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a> principle is that the <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> methods
 that wrap <a class="reference external" href="http://github.com/arq5x/bedtools">BEDTools</a> programs do the same thing and take the exact same
 arguments as the <a class="reference external" href="http://github.com/arq5x/bedtools">BEDTools</a> program.  Here we can pass <em>d=100</em> and <em>s=True</em>
 only because the underlying <a class="reference external" href="http://github.com/arq5x/bedtools">BEDTools</a> program, <tt class="docutils literal"><span class="pre">mergeBed</span></tt>, can accept
@@ -602,7 +650,7 @@ these arguments.  Need to know what arguments <tt class="docutils literal"><span
 the docs for <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.merge" title="pybedtools.bedtool.merge"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.merge()</span></tt></a>; for more on this see <a class="reference internal" href="#good-docs-principle">good docs
 principle</a>.</p>
 <p>In general, remove the &quot;Bed&quot; from the end of the <a class="reference external" href="http://github.com/arq5x/bedtools">BEDTools</a> program to get
-the corresponding <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> method.  So there's a
+the corresponding <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> method.  So there's a
 <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.subtract" title="pybedtools.bedtool.subtract"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.subtract()</span></tt></a> method for <tt class="docutils literal"><span class="pre">subtractBed</span></tt>, a
 <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.intersect" title="pybedtools.bedtool.intersect"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.intersect()</span></tt></a> method for <tt class="docutils literal"><span class="pre">intersectBed</span></tt>, and so on.</p>
 <p>Since these methods just wrap <a class="reference external" href="http://github.com/arq5x/bedtools">BEDTools</a> programs, they are as up-to-date as
@@ -618,7 +666,7 @@ would have to specify the input file with the <em class="xref std std-option">me
 <em>a</em>, we want to operate on the bed file that <em>a</em> points to.</p>
 <p>In general, <a class="reference external" href="http://github.com/arq5x/bedtools">BEDTools</a> programs that accept a single BED file as input
 (by convention typically specified with the <em class="xref std std-option">-i</em> option) the
-default behavior for <a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a> is to use the <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a>'s
+default behavior for <a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a> is to use the <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt>'s
 file (indicated in the <tt class="xref py py-attr docutils literal"><span class="pre">bedtool.fn</span></tt> attribute) as input.</p>
 <p>We can still pass a file using the <em>i</em> keyword argument if we wanted to be
 absolutely explicit.  In fact, the following two versions produce the same
@@ -650,7 +698,7 @@ the first non-keyword argument to the method as <tt class="docutils literal"><sp
 </pre></div>
 </div>
 <p>Furthermore, the first non-keyword argument used as <tt class="docutils literal"><span class="pre">-b</span></tt> can either be a
-filename <em>or</em> another <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> object.</p>
+filename <em>or</em> another <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> object.</p>
 </div>
 <div class="section" id="principal-4-other-arguments-have-no-defaults">
 <span id="non-defaults-principle"></span><h3>Principal 4: Other arguments have no defaults<a class="headerlink" href="#principal-4-other-arguments-have-no-defaults" title="Permalink to this headline">¶</a></h3>
@@ -660,7 +708,7 @@ pass a value (integer, float, whatever) for value-type options like <tt class="d
 and boolean values (<em>True</em> or <em>False</em>) for the switch-type options like
 <tt class="docutils literal"><span class="pre">-s</span></tt>.</p>
 <p>Here's another example using both types of keyword arguments; the
-<a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> object <em>b</em> (or it could be a string filename too) is
+<tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> object <em>b</em> (or it could be a string filename too) is
 implicitly passed to <tt class="docutils literal"><span class="pre">intersectBed</span></tt> as <tt class="docutils literal"><span class="pre">-b</span></tt> (see <a class="reference internal" href="#default-args-principle">default args
 principle</a> above):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">intersect</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
@@ -670,16 +718,16 @@ principle</a> above):</p>
 input files mentioned above, these other options like <em class="xref std std-option">-d</em> and
 <em class="xref std std-option">s</em> have no defaults.</p>
 <p>Again, any option that can be passed to a <a class="reference external" href="http://github.com/arq5x/bedtools">BEDTools</a> program can be passed
-to the corresonding <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> method.</p>
+to the corresonding <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> method.</p>
 </div>
 <div class="section" id="principle-5-chaining-together-commands">
 <span id="chaining-principle"></span><h3>Principle 5: Chaining together commands<a class="headerlink" href="#principle-5-chaining-together-commands" title="Permalink to this headline">¶</a></h3>
-<p>Most methods return new <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> objects, allowing you to chain
+<p>Most methods return new <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> objects, allowing you to chain
 things together just like piping commands together on the command line.  To
 give you a flavor of this, here is how you would get the merged regions of
 features shared between <tt class="file docutils literal"><span class="pre">a.bed</span></tt> (as referred to by the
-<a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> <em>a</em> we made previously) and <tt class="file docutils literal"><span class="pre">b.bed</span></tt>: (as referred to
-by the <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> <em>b</em>):</p>
+<tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> <em>a</em> we made previously) and <tt class="file docutils literal"><span class="pre">b.bed</span></tt>: (as referred to
+by the <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> <em>b</em>):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">intersect</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">()</span><span class="o">.</span><span class="n">saveas</span><span class="p">(</span><span class="s">&#39;shared_merged.bed&#39;</span><span class="p">)</span>
 <span class="go">&lt;bedtool (shared_merged.bed)&gt;</span>
 </pre></div>
@@ -699,9 +747,9 @@ a method in the docstring as well.</p>
 </div>
 <div class="section" id="example-flanking-seqs">
 <h2>Example: Flanking seqs<a class="headerlink" href="#example-flanking-seqs" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.slop" title="pybedtools.bedtool.slop"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.slop()</span></tt></a> method (which calls <tt class="docutils literal"><span class="pre">slopBed</span></tt>) needs a
+<p>The <tt class="xref py py-meth docutils literal"><span class="pre">bedtool.slop()</span></tt> method (which calls <tt class="docutils literal"><span class="pre">slopBed</span></tt>) needs a
 chromosome size file.  If you specify a genome name to the
-<a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.slop" title="pybedtools.bedtool.slop"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.slop()</span></tt></a> method, it will retrieve this file for you
+<tt class="xref py py-meth docutils literal"><span class="pre">bedtool.slop()</span></tt> method, it will retrieve this file for you
 automatically from the UCSC Genome Browser MySQL database.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pybedtools</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">pybedtools</span><span class="o">.</span><span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
@@ -838,7 +886,7 @@ automatically from the UCSC Genome Browser MySQL database.</p>
         <li class="right" >
           <a href="main.html" title="Installation"
              >previous</a> |</li>
-        <li><a href="index.html">pybedtools v0.2.1dev documentation</a> &raquo;</li> 
+        <li><a href="index.html">pybedtools v0.2.0dev documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

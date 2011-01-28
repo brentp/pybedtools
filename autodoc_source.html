@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Module documentation &mdash; pybedtools v0.2.1dev documentation</title>
+    <title>Module documentation &mdash; pybedtools v0.2.0dev documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.2.1dev',
+        VERSION:     '0.2.0dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="pybedtools v0.2.1dev documentation" href="index.html" />
+    <link rel="top" title="pybedtools v0.2.0dev documentation" href="index.html" />
     <link rel="prev" title="Tutorial" href="tutorial.html" /> 
   </head>
   <body>
@@ -37,7 +37,7 @@
         <li class="right" >
           <a href="tutorial.html" title="Tutorial"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">pybedtools v0.2.1dev documentation</a> &raquo;</li> 
+        <li><a href="index.html">pybedtools v0.2.0dev documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -59,14 +59,14 @@ documentation.</p>
 
 <dl class="function">
 <dt id="pybedtools.example_bed_fn">
-<tt class="descclassname">pybedtools.</tt><tt class="descname">example_bed_fn</tt><big>(</big><em>bed</em><big>)</big><a class="reference internal" href="_modules/pybedtools.html#example_bed_fn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pybedtools.example_bed_fn" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">pybedtools.</tt><tt class="descname">example_bed_fn</tt><big>(</big><em>bed</em><big>)</big><a class="headerlink" href="#pybedtools.example_bed_fn" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a bed file from the pybedtools examples directory.  Use
 <a class="reference internal" href="#pybedtools.list_example_beds" title="pybedtools.list_example_beds"><tt class="xref py py-func docutils literal"><span class="pre">list_example_beds()</span></tt></a> to see a list of files that are included.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="pybedtools.example_bedtool">
-<tt class="descclassname">pybedtools.</tt><tt class="descname">example_bedtool</tt><big>(</big><em>fn</em><big>)</big><a class="reference internal" href="_modules/pybedtools.html#example_bedtool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pybedtools.example_bedtool" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">pybedtools.</tt><tt class="descname">example_bedtool</tt><big>(</big><em>fn</em><big>)</big><a class="headerlink" href="#pybedtools.example_bedtool" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a bedtool using a bed file from the pybedtools examples directory.
 Use <a class="reference internal" href="#pybedtools.list_example_beds" title="pybedtools.list_example_beds"><tt class="xref py py-func docutils literal"><span class="pre">list_example_beds()</span></tt></a> to see a list of files that are included.</p>
 </dd></dl>
@@ -85,233 +85,20 @@ it to <tt class="xref py py-func docutils literal"><span class="pre">example_bed
 </dd></dl>
 
 </div>
-<div class="section" id="bedtool-methods">
-<h2><a class="reference internal" href="#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> methods<a class="headerlink" href="#bedtool-methods" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="pybedtools.bedtool">
-<em class="property">class </em><tt class="descclassname">pybedtools.</tt><tt class="descname">bedtool</tt><big>(</big><em>fn</em>, <em>genome=None</em>, <em>from_string=False</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wrapper around Aaron Quinlans <tt class="docutils literal"><span class="pre">BEDtools</span></tt> suite of programs
-(<a class="reference external" href="https://github.com/arq5x/bedtools">https://github.com/arq5x/bedtools</a>); also contains many useful
-methods for more detailed work with BED files.</p>
-<p>Typical usage is to point to an existing file:</p>
-<blockquote>
-<div>a = bedtool('a.bed')</div></blockquote>
-<p>But you can also create one from scratch from a string:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>s = '''</dt>
-<dd>chrX  1  100
-chrX 25  800
-'''</dd>
-</dl>
-<p>a = bedtool(s,from_string=True).saveas('a.bed')</p>
-</div></blockquote>
-<p>Or use examples that come with pybedtools:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">example_beds</span> <span class="o">=</span> <span class="n">pybedtools</span><span class="o">.</span><span class="n">list_example_beds</span><span class="p">()</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">pybedtools</span><span class="o">.</span><span class="n">example_bedtool</span><span class="p">(</span><span class="s">&#39;a.bed&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<dl class="method">
-<dt id="pybedtools.bedtool.cat">
-<tt class="descname">cat</tt><big>(</big><em>other</em>, <em>postmerge=True</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.cat" title="Permalink to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Concatenates two bedtools objects (or an object and a file) and does an
-optional post-merge of the features.</p>
-<p>Use <em>postmerge=False</em> if you want to keep features separate.</p>
-<p>TODO:</p>
-<blockquote>
-<div>currently truncates at BED3 format!</div></blockquote>
-<p>kwargs are sent to <a class="reference internal" href="#pybedtools.bedtool.merge" title="pybedtools.bedtool.merge"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.merge()</span></tt></a>.</p>
-<p>Example usage:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
-
-<span class="c"># concatenate and merge features together if they overlap and are</span>
-<span class="c"># on the same strand</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="s">&#39;other.bed&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div></blockquote>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This method returns a new bedtool instance</p>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This method accepts either a bedtool or a file name as the first
-unnamed argument</p>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="pybedtools.bedtool.closest">
-<tt class="descname">closest</tt><big>(</big><em>other</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.closest" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>pybedtools help:</em></p>
-<blockquote>
-<div><blockquote>
-<div><p>Return a new bedtool object containing closest features in <em>other</em>.  Note
-that the resulting file is no longer a valid BED format; use the
-special &quot;_closest&quot; methods to work with the resulting file.</p>
-<p>Example usage:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
-
-<span class="c"># get the closest feature in &#39;other.bed&#39; on the same strand</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">closest</span><span class="p">(</span><span class="s">&#39;other.bed&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div></blockquote>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This method returns a new bedtool instance</p>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">For convenience, the file this bedtool object points to is passed as &quot;-a&quot;</p>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This method accepts either a bedtool or a file name as the first
-unnamed argument</p>
-</div>
-</div></blockquote>
-<p><em>Original BEDtools program help:</em></p>
-<blockquote>
-<div><p>Program: closestBed (v2.10.0)
-Authors: Aaron Quinlan (<a class="reference external" href="mailto:aaronquinlan&#37;&#52;&#48;gmail&#46;com">aaronquinlan<span>&#64;</span>gmail<span>&#46;</span>com</a>)</p>
-<blockquote>
-<div>Erik Arner, Riken</div></blockquote>
-<dl class="docutils">
-<dt>Summary: For each feature in A, finds the closest </dt>
-<dd>feature (upstream or downstream) in B.</dd>
-</dl>
-<p>Usage:   closestBed [OPTIONS] -a &lt;bed/gff/vcf&gt; -b &lt;bed/gff/vcf&gt;</p>
-<dl class="docutils">
-<dt>Options: </dt>
-<dd><table class="first last docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group">
-<kbd><span class="option">-s</span></kbd></td>
-<td>Force strandedness.  That is, find the closest feature in B
-that overlaps A on the same strand.
-- By default, overlaps are reported without respect to strand.</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">-d</span></kbd></td>
-<td>In addition to the closest feature in B, 
-report its distance to A as an extra column.
-- The reported distance for overlapping features will be 0.</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">-t</span></kbd></td>
-<td>How ties for closest feature are handled.  This occurs when two
-features in B have exactly the same overlap with A.
-By default, all such features in B are reported.
-Here are all the options:
-- &quot;all&quot;  Report all ties (default).
-- &quot;first&quot;  Report the first tie that occurred in the B file.
-- &quot;last&quot;  Report the last tie that occurred in the B file.</td></tr>
-</tbody>
-</table>
-</dd>
-<dt>Notes: </dt>
-<dd>Reports &quot;none&quot; for chrom and &quot;-1&quot; for all other fields when a feature
-is not found in B on the same chromosome as the feature in A.
-E.g. none       -1      -1</dd>
-</dl>
-</div></blockquote>
-</dd></dl>
-
-<dl class="method">
-<dt id="pybedtools.bedtool.count">
-<tt class="descname">count</tt><big>(</big><big>)</big><a class="headerlink" href="#pybedtools.bedtool.count" title="Permalink to this definition">¶</a></dt>
-<dd><p>Number of features in BED file. Does the same thing as len(self), which
-actually just calls this method.</p>
-<p>Only counts the actual features.  Ignores any track lines, browser
-lines, lines starting with a &quot;#&quot;, or blank lines.</p>
-<p>Example usage:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
-<span class="n">a</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="pybedtools.bedtool.counts">
-<tt class="descname">counts</tt><big>(</big><big>)</big><a class="headerlink" href="#pybedtools.bedtool.counts" title="Permalink to this definition">¶</a></dt>
-<dd><p>After running <a class="reference internal" href="#pybedtools.bedtool.intersect" title="pybedtools.bedtool.intersect"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.intersect()</span></tt></a> with the kwarg <em>c=True</em>, use
-this method to return a list of the count of features in &quot;b&quot; that
-intersected each feature in &quot;a&quot;.</p>
-<p>Example usage:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">intersect</span><span class="p">(</span><span class="s">&#39;other.bed&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">counts</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">counts</span><span class="p">()</span>
-
-<span class="c"># assuming you have matplotlib installed, plot a histogram</span>
-
-<span class="kn">import</span> <span class="nn">pylab</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="pybedtools.bedtool.feature_centers">
-<tt class="descname">feature_centers</tt><big>(</big><em>n</em>, <em>report_smaller=True</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.feature_centers" title="Permalink to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Returns a new bedtools object with just the centers of size n extracted
-from this object's features.</p>
-<p>If <em>report_smaller</em> is True, then report features that are smaller than
-<em>n</em>.  Otherwise, ignore them.</p>
-<p>Example usage:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
-
-<span class="c"># 5bp on either side of the center of each feature</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">feature_centers</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-</pre></div>
-</div>
-</div></blockquote>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This method returns a new bedtool instance</p>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="pybedtools.bedtool.features">
-<tt class="descname">features</tt><big>(</big><big>)</big><a class="headerlink" href="#pybedtools.bedtool.features" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns an iterator of <tt class="xref py py-class docutils literal"><span class="pre">bedfeature</span></tt> objects.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pybedtools.bedtool.get_genome">
-<tt class="descname">get_genome</tt><big>(</big><em>genome</em>, <em>fn=None</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.get_genome" title="Permalink to this definition">¶</a></dt>
-<dd><p>Download chrom size info for <em>genome</em> from UCSC, removes the header
-line, and saves in a temp file.  Could be useful for end users,
-but mostly called internally by <a class="reference internal" href="#pybedtools.bedtool.slop" title="pybedtools.bedtool.slop"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.slop()</span></tt></a> and other methods that need
-the genome file.</p>
-<p>If <em>fn</em> is None, then saves as a temp file.</p>
-<p>Returns the filename.</p>
-<p>Example usage:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
-<span class="n">fn</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">get_genome</span><span class="p">(</span><span class="s">&#39;dm3&#39;</span><span class="p">,</span> <span class="s">&#39;dm3.genome&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="pybedtools.bedtool.head">
-<tt class="descname">head</tt><big>(</big><em>n=10</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.head" title="Permalink to this definition">¶</a></dt>
-<dd><p>Prints the first <em>n</em> lines</p>
-</dd></dl>
-
+<div class="section" id="bedtool-methods-that-wrap-bedtools-programs">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> methods that wrap BEDTools programs<a class="headerlink" href="#bedtool-methods-that-wrap-bedtools-programs" title="Permalink to this headline">¶</a></h2>
+<p>The following methods wrap <a href="#id1"><span class="problematic" id="id2">BEDTools_</span></a> programs.  This package is still in
+development; the goal is to eventually support all <a href="#id3"><span class="problematic" id="id4">BEDTools_</span></a> programs.</p>
+<div class="section" id="bedtool-intersect">
+<h3><a class="reference internal" href="#pybedtools.bedtool.intersect" title="pybedtools.bedtool.intersect"><tt class="xref py py-class docutils literal"><span class="pre">bedtool.intersect</span></tt></a><a class="headerlink" href="#bedtool-intersect" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
 <dt id="pybedtools.bedtool.intersect">
-<tt class="descname">intersect</tt><big>(</big><em>b=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.intersect" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">bedtool.</tt><tt class="descname">intersect</tt><big>(</big><em>b=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.intersect" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>pybedtools help:</em></p>
 <blockquote>
 <div><blockquote>
-<div><p>Intersect with another BED file. If you want to use BAM, specify
-<em>abam='filename.bam'</em>.  Returns a new bedtool object.</p>
+<div><p>Intersect with another BED file. If you want to use BAM as input, you
+need to specify <em>abam='filename.bam'</em>.  Returns a new bedtool object.</p>
 <p>Example usage:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># create new bedtool object</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
@@ -428,44 +215,12 @@ overlap A on the same strand.
 </div></blockquote>
 </dd></dl>
 
-<dl class="method">
-<dt id="pybedtools.bedtool.intersection_report">
-<tt class="descname">intersection_report</tt><big>(</big><em>other</em>, <em>basename=True</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.intersection_report" title="Permalink to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Prints a report of the reciprocal intersections with another bed file
-or <a class="reference internal" href="#pybedtools.bedtool" title="pybedtools.bedtool"><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt></a> object.</p>
-<p>If <em>basename</em> is True (default), only prints the basename of the file
-and not the whole path.</p>
-<p>a = bedtool('in.bed')
-a.intersection_report('other.bed')</p>
-</div></blockquote>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This method accepts either a bedtool or a file name as the first
-unnamed argument</p>
 </div>
-</dd></dl>
-
-<dl class="method">
-<dt id="pybedtools.bedtool.lengths">
-<tt class="descname">lengths</tt><big>(</big><big>)</big><a class="headerlink" href="#pybedtools.bedtool.lengths" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a list of feature lengths.</p>
-<p>Example usage:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
-
-<span class="n">lengths</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">lengths</span><span class="p">()</span>
-
-<span class="c"># if you have pylab installed, plot a histogram</span>
-<span class="kn">import</span> <span class="nn">pylab</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</dd></dl>
-
+<div class="section" id="bedtool-merge">
+<h3><a class="reference internal" href="#pybedtools.bedtool.merge" title="pybedtools.bedtool.merge"><tt class="xref py py-class docutils literal"><span class="pre">bedtool.merge</span></tt></a><a class="headerlink" href="#bedtool-merge" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
 <dt id="pybedtools.bedtool.merge">
-<tt class="descname">merge</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.merge" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">bedtool.</tt><tt class="descname">merge</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.merge" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>pybedtools help:</em></p>
 <blockquote>
 <div><blockquote>
@@ -524,87 +279,24 @@ to be merged.
 </div></blockquote>
 </dd></dl>
 
+</div>
+<div class="section" id="bedtool-subtract">
+<h3><a class="reference internal" href="#pybedtools.bedtool.subtract" title="pybedtools.bedtool.subtract"><tt class="xref py py-class docutils literal"><span class="pre">bedtool.subtract</span></tt></a><a class="headerlink" href="#bedtool-subtract" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
-<dt id="pybedtools.bedtool.newshuffle">
-<tt class="descname">newshuffle</tt><big>(</big><big>)</big><a class="headerlink" href="#pybedtools.bedtool.newshuffle" title="Permalink to this definition">¶</a></dt>
-<dd><p>Quite fast implementation of shuffleBed; assumes 'dm3' as the genome
-and assumes shuffling within chroms.</p>
+<dt id="pybedtools.bedtool.subtract">
+<tt class="descclassname">bedtool.</tt><tt class="descname">subtract</tt><big>(</big><em>other</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.subtract" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>pybedtools help:</em></p>
+<blockquote>
+<div><blockquote>
+<div><p>Subtracts from another BED file and returns a new bedtool object.</p>
 <p>Example usage:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
 
-<span class="c"># randomly shuffled version of &quot;a&quot;</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">newshuffle</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>This is equivalent to the following command-line usage of <tt class="docutils literal"><span class="pre">shuffleBed</span></tt>:</p>
-<div class="highlight-python"><pre>shuffleBed -i in.bed -g dm3.genome -chrom -seed $RANDOM &gt; /tmp/tmpfile</pre>
-</div>
-</dd></dl>
+<span class="c"># do a &quot;stranded&quot; subtraction</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="s">&#39;other.bed&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
-<dl class="method">
-<dt id="pybedtools.bedtool.normalized_counts">
-<tt class="descname">normalized_counts</tt><big>(</big><big>)</big><a class="headerlink" href="#pybedtools.bedtool.normalized_counts" title="Permalink to this definition">¶</a></dt>
-<dd><p>After running <a class="reference internal" href="#pybedtools.bedtool.intersect" title="pybedtools.bedtool.intersect"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.intersect()</span></tt></a> with the kwarg <em>c=True</em>, use
-this method to return a list of the density of features in &quot;b&quot; that
-intersected each feature in &quot;a&quot;.</p>
-<p>This takes the counts in each feature and divides by the bp in that
-feature.</p>
-<p>Example usage:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">intersect</span><span class="p">(</span><span class="s">&#39;other.bed&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">counts</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">normalized_counts</span><span class="p">()</span>
-
-<span class="c"># assuming you have matplotlib installed, plot a histogram</span>
-
-<span class="kn">import</span> <span class="nn">pylab</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="pybedtools.bedtool.parse_kwargs">
-<tt class="descname">parse_kwargs</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.parse_kwargs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Given a set of keyword arguments, turns them into a command
-line-ready list of strings.  E.g., the kwarg dict:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">f</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>will be returned as:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="s">&#39;-c&#39;</span><span class="p">,</span><span class="s">&#39;-f&#39;</span><span class="p">,</span><span class="s">&#39;0.5&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>If there are symbols (e.g., &quot;|&quot;), then the parameter is quoted.&quot;</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pybedtools.bedtool.print_randomstats">
-<tt class="descname">print_randomstats</tt><big>(</big><em>other</em>, <em>iterations</em>, <em>intersectkwargs={}</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.print_randomstats" title="Permalink to this definition">¶</a></dt>
-<dd><p>Nicely prints the reciprocal randomization of two files.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pybedtools.bedtool.print_sequence">
-<tt class="descname">print_sequence</tt><big>(</big><big>)</big><a class="headerlink" href="#pybedtools.bedtool.print_sequence" title="Permalink to this definition">¶</a></dt>
-<dd><p>Print the sequence that was retrieved by the <a class="reference internal" href="#pybedtools.bedtool.sequence" title="pybedtools.bedtool.sequence"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.sequence()</span></tt></a>
-method.</p>
-<p>See usage example in <a class="reference internal" href="#pybedtools.bedtool.sequence" title="pybedtools.bedtool.sequence"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.sequence()</span></tt></a>.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pybedtools.bedtool.random_subset">
-<tt class="descname">random_subset</tt><big>(</big><em>n</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.random_subset" title="Permalink to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Returns a new bedtools object containing a random subset of the
-features in this subset.  Currently does so by reading in all features;
-future updates should fix this to something more robust (e.g., newlines
-in a memory map)</p>
-<p>Example usage:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
-
-<span class="c"># Choose 5 random features from &#39;in.bed&#39;</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">random_subset</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="c"># Require 50% of features in a to overlap</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="s">&#39;other.bed&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -612,93 +304,49 @@ in a memory map)</p>
 <p class="first admonition-title">Note</p>
 <p class="last">This method returns a new bedtool instance</p>
 </div>
-</dd></dl>
-
-<dl class="method">
-<dt id="pybedtools.bedtool.randomintersection">
-<tt class="descname">randomintersection</tt><big>(</big><em>other</em>, <em>iterations</em>, <em>intersectkwargs={}</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.randomintersection" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs <em>iterations</em> shufflings of self, each time intersecting with
-<em>other</em>.  <em>intersectkwargs</em> are passed to self.intersect().  Returns a
-list of integers where each integer is the number of intersections of
-one shuffled file with <em>other</em>.</p>
-<p>Example usage:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">r</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">randomintersection</span><span class="p">(</span><span class="s">&#39;other.bed&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;u&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">})</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="pybedtools.bedtool.randomstats">
-<tt class="descname">randomstats</tt><big>(</big><em>other</em>, <em>iterations</em>, <em>intersectkwargs={}</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.randomstats" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sends args to <a class="reference internal" href="#pybedtools.bedtool.randomintersection" title="pybedtools.bedtool.randomintersection"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.randomintersection()</span></tt></a> and compiles results
-into a dictionary with useful stats.  Requires scipy and numpy.</p>
-<p>Example usage:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
-
-<span class="c"># Randomization results from 100 iterations, using the u=True kwarg (report</span>
-<span class="c"># features in &quot;a&quot; only once for each intersection).</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">randomstats</span><span class="p">(</span><span class="s">&#39;other.bed&#39;</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">intersectkwargs</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;u&#39;</span><span class="p">:</span><span class="bp">True</span><span class="p">})</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="pybedtools.bedtool.rename_features">
-<tt class="descname">rename_features</tt><big>(</big><em>new_name</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.rename_features" title="Permalink to this definition">¶</a></dt>
-<dd><blockquote>
-<div>Forces a rename of all features.  Useful for if you have a BED file of
-exons and you want all of them to have the name &quot;exon&quot;.</div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This method returns a new bedtool instance</p>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="pybedtools.bedtool.save_seqs">
-<tt class="descname">save_seqs</tt><big>(</big><em>fn</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.save_seqs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Save sequences of features in this bedtool object as a fasta file <em>fn</em>.</p>
-<p>In order to use this function, you need to have called
-the <a class="reference internal" href="#pybedtools.bedtool.sequence" title="pybedtools.bedtool.sequence"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.sequence()</span></tt></a> method.</p>
-<p>A new bedtool object is returned which references the newly saved file.</p>
-<p>Example usage:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
-
-<span class="c"># specify the filename of the genome in fasta format</span>
-<span class="n">a</span><span class="o">.</span><span class="n">sequence</span><span class="p">(</span><span class="s">&#39;data/genomes/genome.fa&#39;</span><span class="p">)</span>
-
-<span class="c"># use this method to save the seqs that correspond to the features</span>
-<span class="c"># in &quot;a&quot;</span>
-<span class="n">a</span><span class="o">.</span><span class="n">save_seqs</span><span class="p">(</span><span class="s">&#39;seqs.fa&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="pybedtools.bedtool.saveas">
-<tt class="descname">saveas</tt><big>(</big><em>fn</em>, <em>trackline=None</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.saveas" title="Permalink to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Save BED file as a new file, adding the optional <em>trackline</em> to the
-beginning.</p>
-<p>Returns a new bedtool for the newly saved file.</p>
-<p>A newline is automatically added to the trackline if it does not
-already have one.</p>
-<p>Example usage:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">random_subset</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">b</span><span class="o">.</span><span class="n">saveas</span><span class="p">(</span><span class="s">&#39;random-5.bed&#39;</span><span class="p">,</span><span class="n">trackline</span><span class="o">=</span><span class="s">&#39;track name=&quot;random subset&quot; color=128,128,255&#39;</span><span class="p">)</span>
-</pre></div>
+<p class="last">This method accepts either a bedtool or a file name as the first
+unnamed argument</p>
 </div>
 </div></blockquote>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This method returns a new bedtool instance</p>
-</div>
+<p><em>Original BEDtools program help:</em></p>
+<blockquote>
+<div><p>Program: subtractBed (v2.10.0)
+Author:  Aaron Quinlan (<a class="reference external" href="mailto:aaronquinlan&#37;&#52;&#48;gmail&#46;com">aaronquinlan<span>&#64;</span>gmail<span>&#46;</span>com</a>)
+Summary: Removes the portion(s) of an interval that is overlapped</p>
+<blockquote>
+<div>by another feature(s).</div></blockquote>
+<p>Usage:   subtractBed [OPTIONS] -a &lt;bed/gff/vcf&gt; -b &lt;bed/gff/vcf&gt;</p>
+<dl class="docutils">
+<dt>Options: </dt>
+<dd><table class="first last docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-f</span></kbd></td>
+<td>Minimum overlap required as a fraction of A.
+- Default is 1E-9 (i.e., 1bp).
+- (FLOAT) (e.g. 0.50)</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-s</span></kbd></td>
+<td>Force strandedness.  That is, only report hits in B that
+overlap A on the same strand.
+- By default, overlaps are reported without respect to strand.</td></tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</div></blockquote>
 </dd></dl>
 
+</div>
+<div class="section" id="bedtool-sequence">
+<h3><a class="reference internal" href="#pybedtools.bedtool.sequence" title="pybedtools.bedtool.sequence"><tt class="xref py py-class docutils literal"><span class="pre">bedtool.sequence</span></tt></a><a class="headerlink" href="#bedtool-sequence" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
 <dt id="pybedtools.bedtool.sequence">
-<tt class="descname">sequence</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.sequence" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">bedtool.</tt><tt class="descname">sequence</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.sequence" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>pybedtools help:</em></p>
 <blockquote>
 <div><blockquote>
@@ -757,113 +405,23 @@ the sequence will be reverse complemented.
 </div></blockquote>
 </dd></dl>
 
-<dl class="method">
-<dt id="pybedtools.bedtool.sequence_coverage">
-<tt class="descname">sequence_coverage</tt><big>(</big><big>)</big><a class="headerlink" href="#pybedtools.bedtool.sequence_coverage" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the number of bases covered by this BED file.  Does a self.merge() first
-to remove potentially multiple-counting bases.</p>
-<p>Example usage:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
-
-<span class="c"># total bp in genome covered by &#39;in.bed&#39;</span>
-<span class="n">total_bp</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">sequence_coverage</span><span class="p">()</span>
-</pre></div>
 </div>
-</dd></dl>
-
+<div class="section" id="bedtool-closest">
+<h3><a class="reference internal" href="#pybedtools.bedtool.closest" title="pybedtools.bedtool.closest"><tt class="xref py py-class docutils literal"><span class="pre">bedtool.closest</span></tt></a><a class="headerlink" href="#bedtool-closest" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
-<dt id="pybedtools.bedtool.shuffle">
-<tt class="descname">shuffle</tt><big>(</big><em>genome=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.shuffle" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>pybedtools help:</em></p>
-<blockquote>
-<div><div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">For convenience, the file this bedtool object points to is passed as &quot;-i&quot;</p>
-</div>
-</div></blockquote>
-<p><em>Original BEDtools program help:</em></p>
-<blockquote>
-<div><p>Program: shuffleBed (v2.10.0)
-Author:  Aaron Quinlan (<a class="reference external" href="mailto:aaronquinlan&#37;&#52;&#48;gmail&#46;com">aaronquinlan<span>&#64;</span>gmail<span>&#46;</span>com</a>)
-Summary: Randomly permute the locations of a feature file among a genome.</p>
-<p>Usage:   shuffleBed [OPTIONS] -i &lt;bed/gff/vcf&gt; -g &lt;genome&gt;</p>
-<dl class="docutils">
-<dt>Options: </dt>
-<dd><table class="first last docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group">
-<kbd><span class="option">-e<var>xcl</var></span></kbd></td>
-<td>A BED/GFF/VCF file of coordinates in which features in -i
-should not be placed (e.g. gaps.bed).</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">-c<var>hrom</var></span></kbd></td>
-<td>Keep features in -i on the same chromosome.
-- By default, the chrom and position are randomly chosen.</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">-s<var>eed</var></span></kbd></td>
-<td>Supply an integer seed for the shuffling.
-- By default, the seed is chosen automatically.
-- (INTEGER)</td></tr>
-</tbody>
-</table>
-</dd>
-<dt>Notes: </dt>
-<dd><ol class="first arabic simple">
-<li>The genome file should tab delimited and structured as follows:
-&lt;chromName&gt;&lt;TAB&gt;&lt;chromSize&gt;</li>
-</ol>
-<p class="last">For example, Human (hg19):
-chr1    249250621
-chr2    243199373
-...
-chr18**gl000207**random 4262</p>
-</dd>
-<dt>Tips: </dt>
-<dd><p class="first">One can use the UCSC Genome Browser's MySQL database to extract
-chromosome sizes. For example, H. sapiens:</p>
-<p class="last">mysql --user=genome --host=genome-mysql.cse.ucsc.edu -A -e /
-&quot;select chrom, size from hg19.chromInfo&quot;  &gt; hg19.genome</p>
-</dd>
-</dl>
-</div></blockquote>
-</dd></dl>
-
-<dl class="method">
-<dt id="pybedtools.bedtool.size_filter">
-<tt class="descname">size_filter</tt><big>(</big><em>min=0</em>, <em>max=1000000000000000.0</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.size_filter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a new bedtool object containing only those features that are 
-&gt; <em>min</em> and &lt; <em>max</em>.</p>
-<p>Example usage:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
-
-<span class="c"># Only return features that are over 10 bp.</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">size_filter</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="pybedtools.bedtool.slop">
-<tt class="descname">slop</tt><big>(</big><em>genome=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.slop" title="Permalink to this definition">¶</a></dt>
+<dt id="pybedtools.bedtool.closest">
+<tt class="descclassname">bedtool.</tt><tt class="descname">closest</tt><big>(</big><em>other</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.closest" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>pybedtools help:</em></p>
 <blockquote>
 <div><blockquote>
-<div><p>Wraps slopBed, which adds bp to each feature.  Returns a new bedtool
-object.</p>
-<p>If <em>genome</em> is specified with a genome name, the genome file will be
-automatically retrieved from UCSC Genome Browser.</p>
+<div><p>Return a new bedtool object containing closest features in <em>other</em>.  Note
+that the resulting file is no longer a valid BED format; use the
+special &quot;_closest&quot; methods to work with the resulting file.</p>
 <p>Example usage:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
 
-<span class="c"># increase the size of features by 100 bp in either direction</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">slop</span><span class="p">(</span><span class="n">genome</span><span class="o">=</span><span class="s">&#39;dm3&#39;</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-
-<span class="c"># grow features by 10 bp upstream and 500 bp downstream,</span>
-<span class="c"># using a genome file you already have constructed called</span>
-<span class="c"># dm3.genome.</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">slop</span><span class="p">(</span><span class="n">g</span><span class="o">=</span><span class="s">&#39;dm3.genome&#39;</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> 
+<span class="c"># get the closest feature in &#39;other.bed&#39; on the same strand</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">closest</span><span class="p">(</span><span class="s">&#39;other.bed&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -873,148 +431,7 @@ automatically retrieved from UCSC Genome Browser.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">For convenience, the file this bedtool object points to is passed as &quot;-i&quot;</p>
-</div>
-</div></blockquote>
-<p><em>Original BEDtools program help:</em></p>
-<blockquote>
-<div><p>Program: slopBed (v2.10.0)
-Author:  Aaron Quinlan (<a class="reference external" href="mailto:aaronquinlan&#37;&#52;&#48;gmail&#46;com">aaronquinlan<span>&#64;</span>gmail<span>&#46;</span>com</a>)
-Summary: Add requested base pairs of &quot;slop&quot; to each feature.</p>
-<p>Usage:   slopBed [OPTIONS] -i &lt;bed/gff/vcf&gt; -g &lt;genome&gt; [-b &lt;int&gt; or (-l and -r)]</p>
-<dl class="docutils">
-<dt>Options: </dt>
-<dd><table class="first last docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group">
-<kbd><span class="option">-b</span></kbd></td>
-<td>Increase the BED/GFF/VCF entry by -b base pairs in each direction.
-- (Integer)</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">-l</span></kbd></td>
-<td>The number of base pairs to subtract from the start coordinate.
-- (Integer)</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">-r</span></kbd></td>
-<td>The number of base pairs to add to the end coordinate.
-- (Integer)</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">-s</span></kbd></td>
-<td>Define -l and -r based on strand.
-E.g. if used, -l 500 for a negative-stranded feature, 
-it will add 500 bp downstream.  Default = false.</td></tr>
-</tbody>
-</table>
-</dd>
-<dt>Notes: </dt>
-<dd><ol class="first arabic simple">
-<li>Starts will be set to 0 if options would force it below 0.</li>
-</ol>
-<p>(2)  Ends will be set to the chromosome length if  requested slop would
-force it above the max chrom length.
-(3)  The genome file should tab delimited and structured as follows:</p>
-<p>&lt;chromName&gt;&lt;TAB&gt;&lt;chromSize&gt;</p>
-<p class="last">For example, Human (hg19):
-chr1    249250621
-chr2    243199373
-...
-chr18**gl000207**random 4262</p>
-</dd>
-<dt>Tips: </dt>
-<dd><p class="first">One can use the UCSC Genome Browser's MySQL database to extract
-chromosome sizes. For example, H. sapiens:</p>
-<p class="last">mysql --user=genome --host=genome-mysql.cse.ucsc.edu -A -e /
-&quot;select chrom, size from hg19.chromInfo&quot;  &gt; hg19.genome</p>
-</dd>
-</dl>
-</div></blockquote>
-</dd></dl>
-
-<dl class="method">
-<dt id="pybedtools.bedtool.sort">
-<tt class="descname">sort</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.sort" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>pybedtools help:</em></p>
-<blockquote>
-<div><div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">For convenience, the file this bedtool object points to is passed as &quot;-i&quot;</p>
-</div>
-</div></blockquote>
-<p><em>Original BEDtools program help:</em></p>
-<blockquote>
-<div><p>Program: sortBed (v2.10.0)
-Author:  Aaron Quinlan (<a class="reference external" href="mailto:aaronquinlan&#37;&#52;&#48;gmail&#46;com">aaronquinlan<span>&#64;</span>gmail<span>&#46;</span>com</a>)
-Summary: Sorts a feature file in various and useful ways.</p>
-<p>Usage:   sortBed [OPTIONS] -i &lt;bed/gff/vcf&gt;</p>
-<dl class="docutils">
-<dt>Options: </dt>
-<dd><table class="first last docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group">
-<kbd><span class="option">-s<var>izeA</var></span></kbd></td>
-<td>Sort by feature size in ascending order.</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">-s<var>izeD</var></span></kbd></td>
-<td>Sort by feature size in descending order.</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">-c<var>hrThenSizeA</var></span></kbd></td>
-<td>Sort by chrom (asc), then feature size (asc).</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">-c<var>hrThenSizeD</var></span></kbd></td>
-<td>Sort by chrom (asc), then feature size (desc).</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">-c<var>hrThenScoreA</var></span></kbd></td>
-<td>Sort by chrom (asc), then score (asc).</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">-c<var>hrThenScoreD</var></span></kbd></td>
-<td>Sort by chrom (asc), then score (desc).</td></tr>
-</tbody>
-</table>
-</dd>
-</dl>
-</div></blockquote>
-</dd></dl>
-
-<dl class="method">
-<dt id="pybedtools.bedtool.sorted">
-<tt class="descname">sorted</tt><big>(</big><em>col</em>, <em>reverse=None</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.sorted" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a new bedtool object, sorted by the column specified. col
-can be a list of columns.  BED columns that are ints (start, stop and
-value) will be sorted numerically; other columns will be
-alphabetical.</p>
-<p>reverse is a list of booleans, same length as col, specifying which 
-fields to reverse-sort.</p>
-<p>TODO: currently multiple columns aren't working!</p>
-<p>a = bedtool('in.fn')
-b = a.sorted(col=2) # sort by start position
-c = a.sorted(col=5,reverse=True) # reverse sort on the values</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pybedtools.bedtool.subtract">
-<tt class="descname">subtract</tt><big>(</big><em>other</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.subtract" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>pybedtools help:</em></p>
-<blockquote>
-<div><blockquote>
-<div><p>Subtracts from another BED file and returns a new bedtool object.</p>
-<p>Example usage:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
-
-<span class="c"># do a &quot;stranded&quot; subtraction</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="s">&#39;other.bed&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-
-<span class="c"># Require 50% of features in a to overlap</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="s">&#39;other.bed&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-</pre></div>
-</div>
-</div></blockquote>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This method returns a new bedtool instance</p>
+<p class="last">For convenience, the file this bedtool object points to is passed as &quot;-a&quot;</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -1024,12 +441,15 @@ unnamed argument</p>
 </div></blockquote>
 <p><em>Original BEDtools program help:</em></p>
 <blockquote>
-<div><p>Program: subtractBed (v2.10.0)
-Author:  Aaron Quinlan (<a class="reference external" href="mailto:aaronquinlan&#37;&#52;&#48;gmail&#46;com">aaronquinlan<span>&#64;</span>gmail<span>&#46;</span>com</a>)
-Summary: Removes the portion(s) of an interval that is overlapped</p>
+<div><p>Program: closestBed (v2.10.0)
+Authors: Aaron Quinlan (<a class="reference external" href="mailto:aaronquinlan&#37;&#52;&#48;gmail&#46;com">aaronquinlan<span>&#64;</span>gmail<span>&#46;</span>com</a>)</p>
 <blockquote>
-<div>by another feature(s).</div></blockquote>
-<p>Usage:   subtractBed [OPTIONS] -a &lt;bed/gff/vcf&gt; -b &lt;bed/gff/vcf&gt;</p>
+<div>Erik Arner, Riken</div></blockquote>
+<dl class="docutils">
+<dt>Summary: For each feature in A, finds the closest </dt>
+<dd>feature (upstream or downstream) in B.</dd>
+</dl>
+<p>Usage:   closestBed [OPTIONS] -a &lt;bed/gff/vcf&gt; -b &lt;bed/gff/vcf&gt;</p>
 <dl class="docutils">
 <dt>Options: </dt>
 <dd><table class="first last docutils option-list" frame="void" rules="none">
@@ -1037,39 +457,41 @@ Summary: Removes the portion(s) of an interval that is overlapped</p>
 <col class="description" />
 <tbody valign="top">
 <tr><td class="option-group">
-<kbd><span class="option">-f</span></kbd></td>
-<td>Minimum overlap required as a fraction of A.
-- Default is 1E-9 (i.e., 1bp).
-- (FLOAT) (e.g. 0.50)</td></tr>
-<tr><td class="option-group">
 <kbd><span class="option">-s</span></kbd></td>
-<td>Force strandedness.  That is, only report hits in B that
-overlap A on the same strand.
+<td>Force strandedness.  That is, find the closest feature in B
+that overlaps A on the same strand.
 - By default, overlaps are reported without respect to strand.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-d</span></kbd></td>
+<td>In addition to the closest feature in B, 
+report its distance to A as an extra column.
+- The reported distance for overlapping features will be 0.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-t</span></kbd></td>
+<td>How ties for closest feature are handled.  This occurs when two
+features in B have exactly the same overlap with A.
+By default, all such features in B are reported.
+Here are all the options:
+- &quot;all&quot;  Report all ties (default).
+- &quot;first&quot;  Report the first tie that occurred in the B file.
+- &quot;last&quot;  Report the last tie that occurred in the B file.</td></tr>
 </tbody>
 </table>
 </dd>
+<dt>Notes: </dt>
+<dd>Reports &quot;none&quot; for chrom and &quot;-1&quot; for all other fields when a feature
+is not found in B on the same chromosome as the feature in A.
+E.g. none       -1      -1</dd>
 </dl>
 </div></blockquote>
 </dd></dl>
 
-<dl class="method">
-<dt id="pybedtools.bedtool.tostring">
-<tt class="descname">tostring</tt><big>(</big><big>)</big><a class="headerlink" href="#pybedtools.bedtool.tostring" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the BED file as a string.  You can also <tt class="docutils literal"><span class="pre">print</span></tt> the bedtool object
-to view its contents.</p>
-<p>Example usage:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
-
-<span class="c"># this is one looong string which contains the entire file</span>
-<span class="n">long_string</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">tostring</span><span class="p">()</span>
-</pre></div>
 </div>
-</dd></dl>
-
+<div class="section" id="bedtool-window">
+<h3><a class="reference internal" href="#pybedtools.bedtool.window" title="pybedtools.bedtool.window"><tt class="xref py py-class docutils literal"><span class="pre">bedtool.window</span></tt></a><a class="headerlink" href="#bedtool-window" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
 <dt id="pybedtools.bedtool.window">
-<tt class="descname">window</tt><big>(</big><em>other</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.window" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">bedtool.</tt><tt class="descname">window</tt><big>(</big><em>other</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.window" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>pybedtools help:</em></p>
 <blockquote>
 <div><blockquote>
@@ -1167,18 +589,156 @@ for a negative-stranded feature will add 500 bp downstream.
 </div></blockquote>
 </dd></dl>
 
+</div>
+<div class="section" id="bedtool-sort">
+<h3><a class="reference internal" href="#pybedtools.bedtool.sort" title="pybedtools.bedtool.sort"><tt class="xref py py-class docutils literal"><span class="pre">bedtool.sort</span></tt></a><a class="headerlink" href="#bedtool-sort" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
-<dt id="pybedtools.bedtool.with_attrs">
-<tt class="descname">with_attrs</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.with_attrs" title="Permalink to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Given arbitrary keyword arguments, turns the keys and values into
-attributes.</p>
+<dt id="pybedtools.bedtool.sort">
+<tt class="descclassname">bedtool.</tt><tt class="descname">sort</tt><big>(</big><em>**kwargs</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.sort" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>pybedtools help:</em></p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For convenience, the file this bedtool object points to is passed as &quot;-i&quot;</p>
+</div>
+</div></blockquote>
+<p><em>Original BEDtools program help:</em></p>
+<blockquote>
+<div><p>Program: sortBed (v2.10.0)
+Author:  Aaron Quinlan (<a class="reference external" href="mailto:aaronquinlan&#37;&#52;&#48;gmail&#46;com">aaronquinlan<span>&#64;</span>gmail<span>&#46;</span>com</a>)
+Summary: Sorts a feature file in various and useful ways.</p>
+<p>Usage:   sortBed [OPTIONS] -i &lt;bed/gff/vcf&gt;</p>
+<dl class="docutils">
+<dt>Options: </dt>
+<dd><table class="first last docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-s<var>izeA</var></span></kbd></td>
+<td>Sort by feature size in ascending order.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-s<var>izeD</var></span></kbd></td>
+<td>Sort by feature size in descending order.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-c<var>hrThenSizeA</var></span></kbd></td>
+<td>Sort by chrom (asc), then feature size (asc).</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-c<var>hrThenSizeD</var></span></kbd></td>
+<td>Sort by chrom (asc), then feature size (desc).</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-c<var>hrThenScoreA</var></span></kbd></td>
+<td>Sort by chrom (asc), then score (asc).</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-c<var>hrThenScoreD</var></span></kbd></td>
+<td>Sort by chrom (asc), then score (desc).</td></tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="bedtool-shuffle">
+<h3><a class="reference internal" href="#pybedtools.bedtool.shuffle" title="pybedtools.bedtool.shuffle"><tt class="xref py py-class docutils literal"><span class="pre">bedtool.shuffle</span></tt></a><a class="headerlink" href="#bedtool-shuffle" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="pybedtools.bedtool.shuffle">
+<tt class="descclassname">bedtool.</tt><tt class="descname">shuffle</tt><big>(</big><em>genome=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.shuffle" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>pybedtools help:</em></p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For convenience, the file this bedtool object points to is passed as &quot;-i&quot;</p>
+</div>
+</div></blockquote>
+<p><em>Original BEDtools program help:</em></p>
+<blockquote>
+<div><p>Program: shuffleBed (v2.10.0)
+Author:  Aaron Quinlan (<a class="reference external" href="mailto:aaronquinlan&#37;&#52;&#48;gmail&#46;com">aaronquinlan<span>&#64;</span>gmail<span>&#46;</span>com</a>)
+Summary: Randomly permute the locations of a feature file among a genome.</p>
+<p>Usage:   shuffleBed [OPTIONS] -i &lt;bed/gff/vcf&gt; -g &lt;genome&gt;</p>
+<dl class="docutils">
+<dt>Options: </dt>
+<dd><table class="first last docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-e<var>xcl</var></span></kbd></td>
+<td>A BED/GFF/VCF file of coordinates in which features in -i
+should not be placed (e.g. gaps.bed).</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-c<var>hrom</var></span></kbd></td>
+<td>Keep features in -i on the same chromosome.
+- By default, the chrom and position are randomly chosen.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-s<var>eed</var></span></kbd></td>
+<td>Supply an integer seed for the shuffling.
+- By default, the seed is chosen automatically.
+- (INTEGER)</td></tr>
+</tbody>
+</table>
+</dd>
+<dt>Notes: </dt>
+<dd><ol class="first arabic simple">
+<li>The genome file should tab delimited and structured as follows:
+&lt;chromName&gt;&lt;TAB&gt;&lt;chromSize&gt;</li>
+</ol>
+<p class="last">For example, Human (hg19):
+chr1    249250621
+chr2    243199373
+...
+chr18**gl000207**random 4262</p>
+</dd>
+<dt>Tips: </dt>
+<dd><p class="first">One can use the UCSC Genome Browser's MySQL database to extract
+chromosome sizes. For example, H. sapiens:</p>
+<p class="last">mysql --user=genome --host=genome-mysql.cse.ucsc.edu -A -e /
+&quot;select chrom, size from hg19.chromInfo&quot;  &gt; hg19.genome</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="bedtool-methods-unique-to-pybedtools">
+<h2><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> methods unique to <a class="reference internal" href="#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a><a class="headerlink" href="#bedtool-methods-unique-to-pybedtools" title="Permalink to this headline">¶</a></h2>
+<p>The following methods are currently only supported for use with BED format
+files; support for other file types is under development.</p>
+<div class="section" id="bedtool-count">
+<h3><a class="reference internal" href="#pybedtools.bedtool.count" title="pybedtools.bedtool.count"><tt class="xref py py-class docutils literal"><span class="pre">bedtool.count</span></tt></a><a class="headerlink" href="#bedtool-count" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="pybedtools.bedtool.count">
+<tt class="descclassname">bedtool.</tt><tt class="descname">count</tt><big>(</big><big>)</big><a class="headerlink" href="#pybedtools.bedtool.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of features in BED file. Does the same thing as len(self), which
+actually just calls this method.</p>
+<p>Only counts the actual features.  Ignores any track lines, browser
+lines, lines starting with a &quot;#&quot;, or blank lines.</p>
 <p>Example usage:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># add a &quot;label&quot; attribute to each bedtool</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;a.bed&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">with_attrs</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s">&#39;transcription factor 1&#39;</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;b.bed&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">with_attrs</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s">&#39;transcription factor 2&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">]:</span>
-    <span class="k">print</span> <span class="n">i</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="s">&#39;features for&#39;</span><span class="p">,</span> <span class="n">i</span><span class="o">.</span><span class="n">label</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="bedtool-saveas">
+<h3><a class="reference internal" href="#pybedtools.bedtool.saveas" title="pybedtools.bedtool.saveas"><tt class="xref py py-class docutils literal"><span class="pre">bedtool.saveas</span></tt></a><a class="headerlink" href="#bedtool-saveas" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="pybedtools.bedtool.saveas">
+<tt class="descclassname">bedtool.</tt><tt class="descname">saveas</tt><big>(</big><em>fn</em>, <em>trackline=None</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.saveas" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Save BED file as a new file, adding the optional <em>trackline</em> to the
+beginning.</p>
+<p>Returns a new bedtool for the newly saved file.</p>
+<p>A newline is automatically added to the trackline if it does not
+already have one.</p>
+<p>Example usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">random_subset</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">saveas</span><span class="p">(</span><span class="s">&#39;random-5.bed&#39;</span><span class="p">,</span><span class="n">trackline</span><span class="o">=</span><span class="s">&#39;track name=&quot;random subset&quot; color=128,128,255&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -1188,8 +748,222 @@ attributes.</p>
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="bedtool-get-genome">
+<h3><a class="reference internal" href="#pybedtools.bedtool.get_genome" title="pybedtools.bedtool.get_genome"><tt class="xref py py-class docutils literal"><span class="pre">bedtool.get_genome</span></tt></a><a class="headerlink" href="#bedtool-get-genome" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="pybedtools.bedtool.get_genome">
+<tt class="descclassname">bedtool.</tt><tt class="descname">get_genome</tt><big>(</big><em>genome</em>, <em>fn=None</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.get_genome" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download chrom size info for <em>genome</em> from UCSC, removes the header
+line, and saves in a temp file.  Could be useful for end users,
+but mostly called internally by <tt class="xref py py-meth docutils literal"><span class="pre">bedtool.slop()</span></tt> and other methods that need
+the genome file.</p>
+<p>If <em>fn</em> is None, then saves as a temp file.</p>
+<p>Returns the filename.</p>
+<p>Example usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
+<span class="n">fn</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">get_genome</span><span class="p">(</span><span class="s">&#39;dm3&#39;</span><span class="p">,</span> <span class="s">&#39;dm3.genome&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
+</div>
+<div class="section" id="bedtool-size-filter">
+<h3><a class="reference internal" href="#pybedtools.bedtool.size_filter" title="pybedtools.bedtool.size_filter"><tt class="xref py py-class docutils literal"><span class="pre">bedtool.size_filter</span></tt></a><a class="headerlink" href="#bedtool-size-filter" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="pybedtools.bedtool.size_filter">
+<tt class="descclassname">bedtool.</tt><tt class="descname">size_filter</tt><big>(</big><em>min=0</em>, <em>max=1000000000000000.0</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.size_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a new bedtool object containing only those features that are 
+&gt; <em>min</em> and &lt; <em>max</em>.</p>
+<p>Example usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
+
+<span class="c"># Only return features that are over 10 bp.</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">size_filter</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="bedtool-lengths">
+<h3><a class="reference internal" href="#pybedtools.bedtool.lengths" title="pybedtools.bedtool.lengths"><tt class="xref py py-class docutils literal"><span class="pre">bedtool.lengths</span></tt></a><a class="headerlink" href="#bedtool-lengths" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="pybedtools.bedtool.lengths">
+<tt class="descclassname">bedtool.</tt><tt class="descname">lengths</tt><big>(</big><big>)</big><a class="headerlink" href="#pybedtools.bedtool.lengths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of feature lengths.</p>
+<p>Example usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
+
+<span class="n">lengths</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">lengths</span><span class="p">()</span>
+
+<span class="c"># if you have pylab installed, plot a histogram</span>
+<span class="kn">import</span> <span class="nn">pylab</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="bedtool-features">
+<h3><a class="reference internal" href="#pybedtools.bedtool.features" title="pybedtools.bedtool.features"><tt class="xref py py-class docutils literal"><span class="pre">bedtool.features</span></tt></a><a class="headerlink" href="#bedtool-features" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="pybedtools.bedtool.features">
+<tt class="descclassname">bedtool.</tt><tt class="descname">features</tt><big>(</big><big>)</big><a class="headerlink" href="#pybedtools.bedtool.features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an iterator of <tt class="xref py py-class docutils literal"><span class="pre">bedfeature</span></tt> objects.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="bedtool-print-sequence">
+<h3><a class="reference internal" href="#pybedtools.bedtool.print_sequence" title="pybedtools.bedtool.print_sequence"><tt class="xref py py-class docutils literal"><span class="pre">bedtool.print_sequence</span></tt></a><a class="headerlink" href="#bedtool-print-sequence" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="pybedtools.bedtool.print_sequence">
+<tt class="descclassname">bedtool.</tt><tt class="descname">print_sequence</tt><big>(</big><big>)</big><a class="headerlink" href="#pybedtools.bedtool.print_sequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print the sequence that was retrieved by the <a class="reference internal" href="#pybedtools.bedtool.sequence" title="pybedtools.bedtool.sequence"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.sequence()</span></tt></a>
+method.</p>
+<p>See usage example in <a class="reference internal" href="#pybedtools.bedtool.sequence" title="pybedtools.bedtool.sequence"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.sequence()</span></tt></a>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="bedtool-save-seqs">
+<h3><a class="reference internal" href="#pybedtools.bedtool.save_seqs" title="pybedtools.bedtool.save_seqs"><tt class="xref py py-class docutils literal"><span class="pre">bedtool.save_seqs</span></tt></a><a class="headerlink" href="#bedtool-save-seqs" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="pybedtools.bedtool.save_seqs">
+<tt class="descclassname">bedtool.</tt><tt class="descname">save_seqs</tt><big>(</big><em>fn</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.save_seqs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save sequences of features in this bedtool object as a fasta file <em>fn</em>.</p>
+<p>In order to use this function, you need to have called
+the <a class="reference internal" href="#pybedtools.bedtool.sequence" title="pybedtools.bedtool.sequence"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.sequence()</span></tt></a> method.</p>
+<p>A new bedtool object is returned which references the newly saved file.</p>
+<p>Example usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
+
+<span class="c"># specify the filename of the genome in fasta format</span>
+<span class="n">a</span><span class="o">.</span><span class="n">sequence</span><span class="p">(</span><span class="s">&#39;data/genomes/genome.fa&#39;</span><span class="p">)</span>
+
+<span class="c"># use this method to save the seqs that correspond to the features</span>
+<span class="c"># in &quot;a&quot;</span>
+<span class="n">a</span><span class="o">.</span><span class="n">save_seqs</span><span class="p">(</span><span class="s">&#39;seqs.fa&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="bedtool-cat">
+<h3><a class="reference internal" href="#pybedtools.bedtool.cat" title="pybedtools.bedtool.cat"><tt class="xref py py-class docutils literal"><span class="pre">bedtool.cat</span></tt></a><a class="headerlink" href="#bedtool-cat" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="pybedtools.bedtool.cat">
+<tt class="descclassname">bedtool.</tt><tt class="descname">cat</tt><big>(</big><em>other</em>, <em>postmerge=True</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#pybedtools.bedtool.cat" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Concatenates two bedtools objects (or an object and a file) and does an
+optional post-merge of the features.</p>
+<p>Use <em>postmerge=False</em> if you want to keep features separate.</p>
+<p>TODO:</p>
+<blockquote>
+<div>currently truncates at BED3 format!</div></blockquote>
+<p>kwargs are sent to <a class="reference internal" href="#pybedtools.bedtool.merge" title="pybedtools.bedtool.merge"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.merge()</span></tt></a>.</p>
+<p>Example usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
+
+<span class="c"># concatenate and merge features together if they overlap and are</span>
+<span class="c"># on the same strand</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="s">&#39;other.bed&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This method returns a new bedtool instance</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This method accepts either a bedtool or a file name as the first
+unnamed argument</p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="bedtool-tostring">
+<h3><a class="reference internal" href="#pybedtools.bedtool.tostring" title="pybedtools.bedtool.tostring"><tt class="xref py py-class docutils literal"><span class="pre">bedtool.tostring</span></tt></a><a class="headerlink" href="#bedtool-tostring" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="pybedtools.bedtool.tostring">
+<tt class="descclassname">bedtool.</tt><tt class="descname">tostring</tt><big>(</big><big>)</big><a class="headerlink" href="#pybedtools.bedtool.tostring" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the BED file as a string.  You can also <tt class="docutils literal"><span class="pre">print</span></tt> the bedtool object
+to view its contents.</p>
+<p>Example usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
+
+<span class="c"># this is one looong string which contains the entire file</span>
+<span class="n">long_string</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">tostring</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="bedtool-sequence-coverage">
+<h3><a class="reference internal" href="#pybedtools.bedtool.sequence_coverage" title="pybedtools.bedtool.sequence_coverage"><tt class="xref py py-class docutils literal"><span class="pre">bedtool.sequence_coverage</span></tt></a><a class="headerlink" href="#bedtool-sequence-coverage" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="pybedtools.bedtool.sequence_coverage">
+<tt class="descclassname">bedtool.</tt><tt class="descname">sequence_coverage</tt><big>(</big><big>)</big><a class="headerlink" href="#pybedtools.bedtool.sequence_coverage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of bases covered by this BED file.  Does a self.merge() first
+to remove potentially multiple-counting bases.</p>
+<p>Example usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
+
+<span class="c"># total bp in genome covered by &#39;in.bed&#39;</span>
+<span class="n">total_bp</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">sequence_coverage</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="bedtool-counts">
+<h3><a class="reference internal" href="#pybedtools.bedtool.counts" title="pybedtools.bedtool.counts"><tt class="xref py py-class docutils literal"><span class="pre">bedtool.counts</span></tt></a><a class="headerlink" href="#bedtool-counts" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="pybedtools.bedtool.counts">
+<tt class="descclassname">bedtool.</tt><tt class="descname">counts</tt><big>(</big><big>)</big><a class="headerlink" href="#pybedtools.bedtool.counts" title="Permalink to this definition">¶</a></dt>
+<dd><p>After running <a class="reference internal" href="#pybedtools.bedtool.intersect" title="pybedtools.bedtool.intersect"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.intersect()</span></tt></a> with the kwarg <em>c=True</em>, use
+this method to return a list of the count of features in &quot;b&quot; that
+intersected each feature in &quot;a&quot;.</p>
+<p>Example usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">intersect</span><span class="p">(</span><span class="s">&#39;other.bed&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">counts</span><span class="p">()</span>
+
+<span class="c"># assuming you have matplotlib installed, plot a histogram</span>
+
+<span class="kn">import</span> <span class="nn">pylab</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="bedtool-normalized-counts">
+<h3><a class="reference internal" href="#pybedtools.bedtool.normalized_counts" title="pybedtools.bedtool.normalized_counts"><tt class="xref py py-class docutils literal"><span class="pre">bedtool.normalized_counts</span></tt></a><a class="headerlink" href="#bedtool-normalized-counts" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="pybedtools.bedtool.normalized_counts">
+<tt class="descclassname">bedtool.</tt><tt class="descname">normalized_counts</tt><big>(</big><big>)</big><a class="headerlink" href="#pybedtools.bedtool.normalized_counts" title="Permalink to this definition">¶</a></dt>
+<dd><p>After running <a class="reference internal" href="#pybedtools.bedtool.intersect" title="pybedtools.bedtool.intersect"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.intersect()</span></tt></a> with the kwarg <em>c=True</em>, use
+this method to return a list of the density of features in &quot;b&quot; that
+intersected each feature in &quot;a&quot;.</p>
+<p>This takes the counts in each feature and divides by the bp in that
+feature.</p>
+<p>Example usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">bedtool</span><span class="p">(</span><span class="s">&#39;in.bed&#39;</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">intersect</span><span class="p">(</span><span class="s">&#39;other.bed&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">normalized_counts</span><span class="p">()</span>
+
+<span class="c"># assuming you have matplotlib installed, plot a histogram</span>
+
+<span class="kn">import</span> <span class="nn">pylab</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
 </div>
 </div>
 
@@ -1203,7 +977,33 @@ attributes.</p>
   <ul>
 <li><a class="reference internal" href="#">Module documentation</a><ul>
 <li><a class="reference internal" href="#module-pybedtools"><tt class="docutils literal"><span class="pre">pybedtools</span></tt> module-level functions</a></li>
-<li><a class="reference internal" href="#bedtool-methods"><tt class="docutils literal"><span class="pre">bedtool</span></tt> methods</a></li>
+<li><a class="reference internal" href="#bedtool-methods-that-wrap-bedtools-programs"><tt class="docutils literal"><span class="pre">bedtool</span></tt> methods that wrap BEDTools programs</a><ul>
+<li><a class="reference internal" href="#bedtool-intersect"><tt class="docutils literal"><span class="pre">bedtool.intersect</span></tt></a></li>
+<li><a class="reference internal" href="#bedtool-merge"><tt class="docutils literal"><span class="pre">bedtool.merge</span></tt></a></li>
+<li><a class="reference internal" href="#bedtool-subtract"><tt class="docutils literal"><span class="pre">bedtool.subtract</span></tt></a></li>
+<li><a class="reference internal" href="#bedtool-sequence"><tt class="docutils literal"><span class="pre">bedtool.sequence</span></tt></a></li>
+<li><a class="reference internal" href="#bedtool-closest"><tt class="docutils literal"><span class="pre">bedtool.closest</span></tt></a></li>
+<li><a class="reference internal" href="#bedtool-window"><tt class="docutils literal"><span class="pre">bedtool.window</span></tt></a></li>
+<li><a class="reference internal" href="#bedtool-sort"><tt class="docutils literal"><span class="pre">bedtool.sort</span></tt></a></li>
+<li><a class="reference internal" href="#bedtool-shuffle"><tt class="docutils literal"><span class="pre">bedtool.shuffle</span></tt></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bedtool-methods-unique-to-pybedtools"><tt class="docutils literal"><span class="pre">bedtool</span></tt> methods unique to <tt class="docutils literal"><span class="pre">pybedtools</span></tt></a><ul>
+<li><a class="reference internal" href="#bedtool-count"><tt class="docutils literal"><span class="pre">bedtool.count</span></tt></a></li>
+<li><a class="reference internal" href="#bedtool-saveas"><tt class="docutils literal"><span class="pre">bedtool.saveas</span></tt></a></li>
+<li><a class="reference internal" href="#bedtool-get-genome"><tt class="docutils literal"><span class="pre">bedtool.get_genome</span></tt></a></li>
+<li><a class="reference internal" href="#bedtool-size-filter"><tt class="docutils literal"><span class="pre">bedtool.size_filter</span></tt></a></li>
+<li><a class="reference internal" href="#bedtool-lengths"><tt class="docutils literal"><span class="pre">bedtool.lengths</span></tt></a></li>
+<li><a class="reference internal" href="#bedtool-features"><tt class="docutils literal"><span class="pre">bedtool.features</span></tt></a></li>
+<li><a class="reference internal" href="#bedtool-print-sequence"><tt class="docutils literal"><span class="pre">bedtool.print_sequence</span></tt></a></li>
+<li><a class="reference internal" href="#bedtool-save-seqs"><tt class="docutils literal"><span class="pre">bedtool.save_seqs</span></tt></a></li>
+<li><a class="reference internal" href="#bedtool-cat"><tt class="docutils literal"><span class="pre">bedtool.cat</span></tt></a></li>
+<li><a class="reference internal" href="#bedtool-tostring"><tt class="docutils literal"><span class="pre">bedtool.tostring</span></tt></a></li>
+<li><a class="reference internal" href="#bedtool-sequence-coverage"><tt class="docutils literal"><span class="pre">bedtool.sequence_coverage</span></tt></a></li>
+<li><a class="reference internal" href="#bedtool-counts"><tt class="docutils literal"><span class="pre">bedtool.counts</span></tt></a></li>
+<li><a class="reference internal" href="#bedtool-normalized-counts"><tt class="docutils literal"><span class="pre">bedtool.normalized_counts</span></tt></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1245,7 +1045,7 @@ attributes.</p>
         <li class="right" >
           <a href="tutorial.html" title="Tutorial"
              >previous</a> |</li>
-        <li><a href="index.html">pybedtools v0.2.1dev documentation</a> &raquo;</li> 
+        <li><a href="index.html">pybedtools v0.2.0dev documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
