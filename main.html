@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Installation &mdash; pybedtools v0.2.0dev documentation</title>
+    <title>Installation &mdash; pybedtools v0.2.2dev documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.2.0dev',
+        VERSION:     '0.2.2dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="pybedtools v0.2.0dev documentation" href="index.html" />
+    <link rel="top" title="pybedtools v0.2.2dev documentation" href="index.html" />
     <link rel="next" title="Tutorial" href="tutorial.html" />
     <link rel="prev" title="Welcome to pybedtools&#39;s documentation!" href="index.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="index.html" title="Welcome to pybedtools&#39;s documentation!"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">pybedtools v0.2.0dev documentation</a> &raquo;</li> 
+        <li><a href="index.html">pybedtools v0.2.2dev documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -54,13 +54,15 @@
 <span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
 <p>To use <a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a> you'll need the latest version of the package and
 the latest version of <a class="reference external" href="http://github.com/arq5x/bedtools">BEDTools</a>.</p>
-<ol class="arabic">
-<li><p class="first">To install the latest version of <a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a>:</p>
+<div class="section" id="installing-pybedtools">
+<h2>Installing <a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a><a class="headerlink" href="#installing-pybedtools" title="Permalink to this headline">¶</a></h2>
+<p>To install the latest version of <a class="reference internal" href="autodoc_source.html#module-pybedtools" title="pybedtools"><tt class="xref py py-mod docutils literal"><span class="pre">pybedtools</span></tt></a> you have 2 options:</p>
+<p><strong>Option 1:</strong> install from source</p>
 <blockquote>
 <div><ul>
 <li><p class="first">go to <a class="reference external" href="http://github.com/daler/pybedtools">http://github.com/daler/pybedtools</a></p>
 </li>
-<li><p class="first">click the Downloads link (<img alt="dl" src="_images/downloads6.png" />)</p>
+<li><p class="first">click the Downloads link (<img alt="dl" src="_images/downloads9.png" />)</p>
 </li>
 <li><p class="first">choose either a <tt class="docutils literal"><span class="pre">.tar.gz</span></tt> or a <tt class="docutils literal"><span class="pre">.zip</span></tt> file, whatever you're
 comfortable with</p>
@@ -74,16 +76,20 @@ comfortable with</p>
 </li>
 </ul>
 </div></blockquote>
-</li>
-<li><p class="first">To install <a class="reference external" href="http://github.com/arq5x/bedtools">BEDTools</a></p>
+<p><strong>Option 2:</strong> use <a class="reference external" href="http://pypi.python.org/pypi/pip">pip</a> to automatically download from the <a class="reference external" href="http://pypi.python.org/pypi">Python Package Index</a>:</p>
+<div class="highlight-python"><pre>sudo pip install --upgrade pybedtools</pre>
+</div>
+</div>
+<div class="section" id="installing-bedtools">
+<h2>Installing <a class="reference external" href="http://github.com/arq5x/bedtools">BEDTools</a><a class="headerlink" href="#installing-bedtools" title="Permalink to this headline">¶</a></h2>
+<p>To install <a class="reference external" href="http://github.com/arq5x/bedtools">BEDTools</a>,</p>
 <blockquote>
 <div><ul class="simple">
 <li>follow the instructions at <a class="reference external" href="https://github.com/arq5x/bedtools">https://github.com/arq5x/bedtools</a> to install</li>
 <li>make sure all its programs are on your path</li>
 </ul>
 </div></blockquote>
-</li>
-</ol>
+</div>
 </div>
 <div class="section" id="three-brief-examples">
 <h1>Three brief examples<a class="headerlink" href="#three-brief-examples" title="Permalink to this headline">¶</a></h1>
@@ -166,7 +172,11 @@ as <tt class="docutils literal"><span class="pre">dm3.fa</span></tt>.</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Installation</a></li>
+<li><a class="reference internal" href="#">Installation</a><ul>
+<li><a class="reference internal" href="#installing-pybedtools">Installing <tt class="docutils literal"><span class="pre">pybedtools</span></tt></a></li>
+<li><a class="reference internal" href="#installing-bedtools">Installing BEDTools</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#three-brief-examples">Three brief examples</a><ul>
 <li><a class="reference internal" href="#example-1-save-a-bed-file-of-intersections-with-track-line">Example 1: Save a BED file of intersections, with track line</a></li>
 <li><a class="reference internal" href="#example-2-intersections-for-a-3-way-venn-diagram">Example 2: Intersections for a 3-way Venn diagram</a></li>
@@ -218,7 +228,7 @@ as <tt class="docutils literal"><span class="pre">dm3.fa</span></tt>.</p>
         <li class="right" >
           <a href="index.html" title="Welcome to pybedtools&#39;s documentation!"
              >previous</a> |</li>
-        <li><a href="index.html">pybedtools v0.2.0dev documentation</a> &raquo;</li> 
+        <li><a href="index.html">pybedtools v0.2.2dev documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
