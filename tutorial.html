@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Tutorial &mdash; pybedtools v0.2.2dev documentation</title>
+    <title>Tutorial &mdash; pybedtools v0.2.3dev documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.2.2dev',
+        VERSION:     '0.2.3dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="pybedtools v0.2.2dev documentation" href="index.html" />
+    <link rel="top" title="pybedtools v0.2.3dev documentation" href="index.html" />
     <link rel="next" title="Module documentation" href="autodoc_source.html" />
     <link rel="prev" title="Installation" href="main.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="main.html" title="Installation"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">pybedtools v0.2.2dev documentation</a> &raquo;</li> 
+        <li><a href="index.html">pybedtools v0.2.3dev documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -355,6 +355,16 @@ the files that are returned when you use the <em>c=True</em> kwarg with
 </div>
 <div class="section" id="topical-documentation">
 <h1>Topical documentation<a class="headerlink" href="#topical-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="release-notes">
+<h2>Release notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dev">
+<h3>0.2.3dev<a class="headerlink" href="#dev" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Added history mechanism, see <a class="reference internal" href="#working-with-history"><em>Using the history and tags</em></a>.</li>
+<li>Added tagging mechanism</li>
+</ul>
+</div>
+</div>
 <div class="section" id="future-work">
 <h2>Future work<a class="headerlink" href="#future-work" title="Permalink to this headline">¶</a></h2>
 <p>The following is a list of items I plan to work on for future releases of
@@ -366,7 +376,8 @@ the files that are returned when you use the <em>c=True</em> kwarg with
 <blockquote>
 <div><ul class="simple">
 <li><tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> objects could keep track of all their 'parent'
-tempfiles, and as such would retain the history of their creation.</li>
+tempfiles, and as such would retain the history of their creation.
+<strong>done</strong></li>
 <li>indexing into the history of a <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> would give you access
 to these previous files</li>
 <li>could have a <tt class="xref py py-meth docutils literal"><span class="pre">bedtool.delete_history()</span></tt>, which would delete all the
@@ -770,6 +781,91 @@ the <a class="reference external" href="http://github.com/arq5x/bedtools">BEDToo
 a method in the docstring as well.</p>
 </div>
 </div>
+<div class="section" id="using-the-history-and-tags">
+<span id="working-with-history"></span><h2>Using the history and tags<a class="headerlink" href="#using-the-history-and-tags" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://github.com/arq5x/bedtools">BEDTools</a> makes it very easy to do rather complex genomic algebra.
+Sometimes when you're doing some exploratory work, you'd like to rewind
+back to a previous step.</p>
+<p>To assist this sort of workflow, <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> instances keep track of
+their history, in the <tt class="xref py py-attr docutils literal"><span class="pre">bedtool.history</span></tt> attribute.  Let's make an
+example <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt>, <em>c</em>, that has some history:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">pybedtools</span><span class="o">.</span><span class="n">example_bedtool</span><span class="p">(</span><span class="s">&#39;a.bed&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">pybedtools</span><span class="o">.</span><span class="n">example_bedtool</span><span class="p">(</span><span class="s">&#39;b.bed&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">intersect</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>c</em> now has a history which tells you all sorts of useful things (described
+in more detail below):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">c</span><span class="o">.</span><span class="n">history</span>
+<span class="go">[&lt;HistoryStep&gt; bedtool(&quot;/home/ryan/pybedtools/pybedtools/test/a.bed&quot;).intersect(&quot;/home/ryan/pybedtools/pybedtools/test/b.bed&quot;, u=True), parent tag: klkreuay, result tag: egzgnrvj]</span>
+</pre></div>
+</div>
+<p>First, the history describes the full commands, including all the names of
+the temp files and all the arguments that you would need to run in order to
+re-create it.  Note that since <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> objects are fundamentally
+file-based, the command refers to the underlying filenames (i.e.,
+<tt class="file docutils literal"><span class="pre">a.bed</span></tt> and <tt class="file docutils literal"><span class="pre">b.bed</span></tt>) instead of the <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> instances
+(i.e., <em>a</em> and <em>b</em>). A simple copy-paste of the command should do the
+trick. Be aware that if you run the command again, you'll get <em>another</em>
+temp file that has the same contents as <em>c</em>'s temp file.</p>
+<p>To avoid such cluttering of your temp dir, the history also reports
+<strong>tags</strong>. <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> objects, when created, get a random tag assigned
+to them.  You can get get the <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> associated with tag with the
+<tt class="xref py py-func docutils literal"><span class="pre">pybedtools.find_tagged()</span></tt> function. These tags are used to keep track
+of instances during this session.</p>
+<p>So in this case, we could get a reference to the <em>a</em> instance with:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">should_be_a</span> <span class="o">=</span> <span class="n">pybedtools</span><span class="o">.</span><span class="n">find_tagged</span><span class="p">(</span><span class="s">&#39;klkreuay&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here's confirmation that the parent of the first step of <em>c</em>'s history is
+<em>a</em> (note that <tt class="xref py py-class docutils literal"><span class="pre">HistoryStep</span></tt> objects have a
+<tt class="xref py py-attr docutils literal"><span class="pre">HistoryStep.parent_tag</span></tt> and <tt class="xref py py-attr docutils literal"><span class="pre">HistoryStep.result_tag</span></tt>):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pybedtools</span><span class="o">.</span><span class="n">find_tagged</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">parent_tag</span><span class="p">)</span> <span class="o">==</span> <span class="n">a</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Let's make something with a more complicated history:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">pybedtools</span><span class="o">.</span><span class="n">example_bedtool</span><span class="p">(</span><span class="s">&#39;a.bed&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">pybedtools</span><span class="o">.</span><span class="n">example_bedtool</span><span class="p">(</span><span class="s">&#39;b.bed&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">intersect</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">slop</span><span class="p">(</span><span class="n">genome</span><span class="o">=</span><span class="s">&#39;hg19&#39;</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">merge</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># this step adds complexity!</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Let's see what the history of <em>f</em> (the last <tt class="xref py py-class docutils literal"><span class="pre">bedtool</span></tt> created) looks
+like . . . note that here I'm formatting the results to make it easier to
+see:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">history</span>
+<span class="go">[</span>
+
+<span class="go"> [</span>
+<span class="go">  [</span>
+<span class="go">   [&lt;HistoryStep&gt; bedtool(&quot;/home/ryan/pybedtools/pybedtools/test/a.bed&quot;).intersect(&quot;/home/ryan/pybedtools/pybedtools/test/b.bed&quot;, ), parent tag: rzrztxlw, result tag: ifbsanqk</span>
+<span class="go">   ],</span>
+<span class="go">   &lt;HistoryStep&gt; bedtool(&quot;/tmp/pybedtools.BgULVj.tmp&quot;).slop(b=1,genome=&quot;hg19&quot;), parent tag: ifbsanqk, result tag: omfrkwjp</span>
+<span class="go">  ],</span>
+<span class="go">   &lt;HistoryStep&gt; bedtool(&quot;/tmp/pybedtools.SFmbYc.tmp&quot;).merge(), parent tag: omfrkwjp, result tag: zlwqblvk</span>
+<span class="go"> ],</span>
+
+<span class="go"> &lt;HistoryStep&gt; bedtool(&quot;/tmp/pybedtools.wlBiMo.tmp&quot;).subtract(&quot;/home/ryan/pybedtools/pybedtools/test/b.bed&quot;, ), parent tag: zlwqblvk, result tag: reztxhen</span>
+<span class="go">]</span>
+</pre></div>
+</div>
+<p>Those first three history steps correspond to <em>c</em>, <em>d</em>, and <em>e</em>
+respectively, as we can see by comparing the code snippet above with the
+commands in each history step.  In other words, <em>e</em> can be described by the
+sequence of 3 commands in the first three history steps.  In fact, if we
+checked <em>e.history</em>, we'd see exactly those same 3 steps.</p>
+<p>When <em>f</em> was created above, it operated both on <em>e</em>, which had its own
+history, as well as <em>b</em> -- note the nesting of the list. You can do
+arbitrarily complex &quot;genome algebra&quot; operations, and the history of the
+<tt class="xref py py-class docutils literal"><span class="pre">bedtools</span></tt> will keep track of this.  It may not be useful in every
+situtation, but the ability to backtrack and have a record of what you've
+done can sometimes be helpful.</p>
+</div>
 <div class="section" id="example-flanking-seqs">
 <h2>Example: Flanking seqs<a class="headerlink" href="#example-flanking-seqs" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="autodoc_source.html#pybedtools.bedtool.slop" title="pybedtools.bedtool.slop"><tt class="xref py py-meth docutils literal"><span class="pre">bedtool.slop()</span></tt></a> method (which calls <tt class="docutils literal"><span class="pre">slopBed</span></tt>) needs a
@@ -848,6 +944,10 @@ automatically from the UCSC Genome Browser MySQL database.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#topical-documentation">Topical documentation</a><ul>
+<li><a class="reference internal" href="#release-notes">Release notes</a><ul>
+<li><a class="reference internal" href="#dev">0.2.3dev</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#future-work">Future work</a></li>
 <li><a class="reference internal" href="#why-use-pybedtools">Why use <tt class="docutils literal"><span class="pre">pybedtools</span></tt>?</a></li>
 <li><a class="reference internal" href="#limitations">Limitations</a></li>
@@ -861,6 +961,7 @@ automatically from the UCSC Genome Browser MySQL database.</p>
 <li><a class="reference internal" href="#principle-6-check-the-help">Principle 6: Check the help</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#using-the-history-and-tags">Using the history and tags</a></li>
 <li><a class="reference internal" href="#example-flanking-seqs">Example: Flanking seqs</a></li>
 <li><a class="reference internal" href="#example-region-centers-that-are-fully-intergenic">Example: Region centers that are fully intergenic</a></li>
 <li><a class="reference internal" href="#example-histogram-of-feature-lengths">Example: Histogram of feature lengths</a></li>
@@ -911,7 +1012,7 @@ automatically from the UCSC Genome Browser MySQL database.</p>
         <li class="right" >
           <a href="main.html" title="Installation"
              >previous</a> |</li>
-        <li><a href="index.html">pybedtools v0.2.2dev documentation</a> &raquo;</li> 
+        <li><a href="index.html">pybedtools v0.2.3dev documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

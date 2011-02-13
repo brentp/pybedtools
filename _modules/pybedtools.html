@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pybedtools &mdash; pybedtools v0.2.2dev documentation</title>
+    <title>pybedtools &mdash; pybedtools v0.2.3dev documentation</title>
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.2.2dev',
+        VERSION:     '0.2.3dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="pybedtools v0.2.2dev documentation" href="../index.html" />
+    <link rel="top" title="pybedtools v0.2.3dev documentation" href="../index.html" />
     <link rel="up" title="Module code" href="index.html" /> 
   </head>
   <body>
@@ -34,7 +34,7 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../index.html">pybedtools v0.2.2dev documentation</a> &raquo;</li>
+        <li><a href="../index.html">pybedtools v0.2.3dev documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -52,44 +52,24 @@
 <div class="viewcode-block" id="data_dir"><a class="viewcode-back" href="../autodoc_source.html#pybedtools.data_dir">[docs]</a><span class="k">def</span> <span class="nf">data_dir</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns the data directory that contains example files for tests and</span>
-<span class="sd">    documentation.</span>
+<span class="sd">    documentation</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">pybedtools</span><span class="o">.</span><span class="n">__file__</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="s">&#39;test&#39;</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="example_bed_fn"><a class="viewcode-back" href="../autodoc_source.html#pybedtools.example_bed_fn">[docs]</a><span class="k">def</span> <span class="nf">example_bed_fn</span><span class="p">(</span><span class="n">bed</span><span class="p">):</span>
+<div class="viewcode-block" id="example_bed"><a class="viewcode-back" href="../autodoc_source.html#pybedtools.example_bed">[docs]</a><span class="k">def</span> <span class="nf">example_bed</span><span class="p">(</span><span class="n">bed</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return a bed file from the pybedtools examples directory.  Use</span>
-<span class="sd">    :func:`list_example_beds` to see a list of files that are included.</span>
+<span class="sd">    Return a bed file from the pybedtools examples directory</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">fn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">(),</span> <span class="n">bed</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s"> does not exist&quot;</span> <span class="o">%</span> <span class="n">fn</span>
     <span class="k">return</span> <span class="n">fn</span>
 </div>
-<div class="viewcode-block" id="example_bedtool"><a class="viewcode-back" href="../autodoc_source.html#pybedtools.example_bedtool">[docs]</a><span class="k">def</span> <span class="nf">example_bedtool</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return a bedtool using a bed file from the pybedtools examples directory.</span>
-<span class="sd">    Use :func:`list_example_beds` to see a list of files that are included.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">fn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">(),</span> <span class="n">fn</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s"> does not exist&quot;</span> <span class="o">%</span> <span class="n">fn</span>
-    <span class="k">return</span> <span class="n">bedtool</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
-</div>
 <div class="viewcode-block" id="list_example_beds"><a class="viewcode-back" href="../autodoc_source.html#pybedtools.list_example_beds">[docs]</a><span class="k">def</span> <span class="nf">list_example_beds</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns a list of bed files in the examples dir.  Choose one and pass</span>
-<span class="sd">    it to :func:`example_bed` to get the full path to an example BED file.</span>
-
-<span class="sd">    Example usage::</span>
-
-<span class="sd">        &gt;&gt;&gt; choices = list_example_beds()</span>
-<span class="sd">        &gt;&gt;&gt; bedfn = example_bed(choices[0])</span>
-<span class="sd">        &gt;&gt;&gt; mybedtool = bedtool(bedfn)</span>
-
-
+<span class="sd">    returns a list of bed files in the examples dir</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">data_dir</span><span class="p">())</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">i</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;.bed&#39;</span><span class="p">])</span></div>
+    <span class="k">return</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">data_dir</span><span class="p">())</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">i</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;.bed&#39;</span><span class="p">]</span></div>
 </pre></div>
 
           </div>
@@ -123,7 +103,7 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../index.html">pybedtools v0.2.2dev documentation</a> &raquo;</li>
+        <li><a href="../index.html">pybedtools v0.2.3dev documentation</a> &raquo;</li>
           <li><a href="index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>
